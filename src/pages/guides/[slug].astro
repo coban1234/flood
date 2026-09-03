@@ -1,0 +1,56 @@
+---
+import MarketLayout from "../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../data/site";
+import { guides, getGuide } from "../../data/guides";
+
+export function getStaticPaths() {
+  return guides.map((g) => ({ params: { slug: g.slug } }));
+}
+
+const guide = getGuide(Astro.params.slug!);
+if (!guide) throw new Error("Unknown guide");
+const path = `/guides/${guide.slug}/`;
+---
+
+<MarketLayout
+  title={`${guide.title} | Tidemark Restoration`}
+  description={guide.dek}
+  path={path}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      headline: guide.title,
+      datePublished: guide.date,
+      dateModified: guide.date,
+      description: guide.dek,
+    },
+  ]}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}/` },
+          { name: "Guides", href: `${SITE_ORIGIN}/guides/` },
+          { name: guide.title },
+        ]}
+      />
+    </div>
+    <article class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">{guide.target}</p>
+        <h1 class="display">{guide.title}</h1>
+        <p class="lede">{guide.dek}</p>
+        {guide.body.map((p) => <p>{p}</p>)}
+        <p>
+          Metro Vancouver service:
+          <a href={`${vancouver.path}/services/structural-drying/`}>structural drying</a>
+          ·
+          <a href={`${vancouver.path}/pricing/`}>published rates</a>
+        </p>
+      </div>
+    </article>
+  </main>
+</MarketLayout>

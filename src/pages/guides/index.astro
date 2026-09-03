@@ -1,0 +1,38 @@
+---
+import MarketLayout from "../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../data/site";
+import { guides } from "../../data/guides";
+---
+
+<MarketLayout
+  title="Water Damage Guides | Tidemark Restoration"
+  description="Shared guides: drying time, categories, claims, hardwood, logs, mould, how water moves, questions to ask."
+  path="/guides/"
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Guides" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Shared across markets</p>
+        <h1 class="display">Guides</h1>
+        <div class="stack">
+          {
+            guides.map((g) => (
+              <p>
+                <a href={`/guides/${g.slug}/`}>{g.title}</a>
+              </p>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

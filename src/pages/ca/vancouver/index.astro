@@ -1,0 +1,152 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import PhotoSlot from "../../../components/PhotoSlot.astro";
+import DamageClock from "../../../components/DamageClock.astro";
+import DryLog from "../../../components/DryLog.astro";
+import Coverage from "../../../components/Coverage.astro";
+import { vancouver } from "../../../data/site";
+import { services } from "../../../data/services";
+import { launchJobs } from "../../../data/jobs";
+import { reviews, processSteps } from "../../../data/content";
+import { homeRatePreview } from "../../../data/rates";
+
+const path = `${vancouver.path}/`;
+---
+
+<MarketLayout
+  title="24/7 Water Damage Restoration Metro Vancouver | Tidemark"
+  description={`Live answer 24/7 across Metro Vancouver. Extraction, structural drying to a documented target, and rebuild. Rates published. Call ${vancouver.phoneDisplay}.`}
+  path={path}
+>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Metro Vancouver · 24/7</p>
+          <h1 class="display">We're awake.</h1>
+          <div class="actions">
+            <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">{vancouver.phoneDisplay}</a>
+          </div>
+          <p style="margin:0.9rem 0 0">
+            <a href={`${vancouver.path}/tell/`}>or tell us what happened →</a>
+          </p>
+          <p class="status"><span class="dot"></span>2 crews on call · Metro Vancouver</p>
+        </div>
+        <div>
+          <PhotoSlot
+            ratio="4/5"
+            caption="FIG. 01 — 01:40 · BURNABY"
+            label="Photograph to be shot: night, crew extracting, work light, water on the floor. Bottom third dark. Shot locally."
+          />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="svc-h">
+      <div class="wrap">
+        <h2 id="svc-h" class="display">Nine services</h2>
+        <div class="tiles">
+          {
+            services.map((s) => (
+              <a class="tile" href={`${vancouver.path}/services/${s.slug}/`}>
+                <div class="tile__photo" role="img" aria-label={`${s.name} — local job photograph to be shot`}></div>
+                <div class="tile__label">{s.tile}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <DamageClock />
+
+    <section class="section">
+      <div class="wrap">
+        <PhotoSlot
+          ratio="16/9"
+          caption="FIG. 03 — 02:15 · BURNABY"
+          label="Full-bleed crew at work, wide, real site. Caption only."
+        />
+      </div>
+    </section>
+
+    <DryLog />
+
+    <section class="section" aria-labelledby="proc-h">
+      <div class="wrap">
+        <h2 id="proc-h" class="display">How a job runs</h2>
+        <div class="tiles">
+          {
+            processSteps.map((s) => (
+              <article class="panel">
+                <p class="num">{s.n}</p>
+                <h3>{s.title}</h3>
+                <p>{s.text}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint" aria-labelledby="rate-h">
+      <div class="wrap page-grid">
+        <div>
+          <h2 id="rate-h" class="display">What we charge</h2>
+          <table class="rate-table">
+            <tbody>
+              {
+                homeRatePreview.map((r) => (
+                  <tr>
+                    <td>{r.item}</td>
+                    <td>{r.rate}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+          <p><a href={`${vancouver.path}/pricing/`}>Full rate card →</a></p>
+        </div>
+        <aside class="night-card">
+          <p class="eyebrow">Published, not quoted after</p>
+          <p class="display">No fuel surcharge. Equipment capped at five days.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="work-h">
+      <div class="wrap">
+        <h2 id="work-h" class="display">Documented jobs</h2>
+        <div class="tiles">
+          {
+            launchJobs.map((j) => (
+              <a class="tile" href={`${vancouver.path}/work/${j.slug}/`}>
+                <div class="tile__photo"></div>
+                <div class="tile__label">{j.title}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+
+    <Coverage />
+
+    <section class="section section--tint" aria-labelledby="rev-h">
+      <div class="wrap">
+        <h2 id="rev-h" class="display">Reviews</h2>
+        <div class="tiles">
+          {
+            reviews.map((r) => (
+              <article class="panel">
+                <p>“{r.quote}”</p>
+                <p class="caption">{r.name} · {r.detail}</p>
+              </article>
+            ))
+          }
+        </div>
+        <p><a href={`${vancouver.path}/reviews/`}>All reviews →</a></p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

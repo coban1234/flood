@@ -1,0 +1,42 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { firstHourPages } from "../../../../data/firstHour";
+
+const path = `${vancouver.path}/first-hour/`;
+---
+
+<MarketLayout
+  title="What To Do First | Metro Vancouver | Tidemark"
+  description="First-hour instructions for burst pipes, flooded basements, ceiling leaks, sewage, and appliance floods in Metro Vancouver."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "First hour" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Read under stress</p>
+        <h1 class="display">What to do first</h1>
+        <p class="lede">Three instructions. Then the phone. These pages are useful even if you never call.</p>
+        <div class="tiles">
+          {
+            firstHourPages.map((p) => (
+              <a class="tile" href={`${path}${p.slug}/`}>
+                <div class="tile__label">{p.title}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

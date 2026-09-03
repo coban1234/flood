@@ -1,0 +1,97 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import RateCard from "../../../components/RateCard.astro";
+import DryLog from "../../../components/DryLog.astro";
+import Faq from "../../../components/Faq.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { commitments, overnightNote } from "../../../data/rates";
+
+const path = `${vancouver.path}/pricing/`;
+const faqs = [
+  {
+    q: "Are these the full rates?",
+    a: "Every charge that can appear on a mitigation invoice is on this page. Rebuild is quoted after dry-out. Insurance programme work uses insurer rates, not this card.",
+  },
+  {
+    q: "Why is overnight more?",
+    a: overnightNote,
+  },
+  {
+    q: "Do rates change by city?",
+    a: "Not inside Metro Vancouver. Burnaby and Richmond use this card. Response time changes by tier, not the price.",
+  },
+  {
+    q: "What is the equipment cap?",
+    a: "Five days without written approval. If readings are still above target, we show you and you approve day six.",
+  },
+  {
+    q: "Is there a fuel surcharge?",
+    a: "No. No contractor fee. No administrative add-on.",
+  },
+  {
+    q: "Can I pay out of pocket?",
+    a: "Yes. See without a claim. This card is for that work.",
+  },
+];
+---
+
+<MarketLayout
+  title="Water Damage Restoration Cost Metro Vancouver — Rates Published"
+  description="Published water damage restoration rates in Metro Vancouver. Call-out $400. Equipment capped at five days. Call (604) 555-0199."
+  path={path}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Offer",
+      priceCurrency: "CAD",
+      priceRange: "$200-$400+",
+      url: `${SITE_ORIGIN}${path}`,
+    },
+  ]}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Pricing" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Indexed and complete</p>
+        <h1 class="display">Our rates, published</h1>
+        <p class="lede">{overnightNote}</p>
+      </div>
+    </section>
+    <DryLog />
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">Three commitments</h2>
+        <div class="tiles">
+          {
+            commitments.map((c) => (
+              <article class="panel">
+                <h3>{c.title}</h3>
+                <p>{c.body}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="section section--tint">
+      <div class="wrap">
+        <RateCard />
+        <p>
+          Insurance branch: <a href={`${vancouver.path}/insurance/`}>how a file is assembled</a> ·
+          <a href={`${vancouver.path}/insurance/without-a-claim/`}>without a claim</a>
+        </p>
+      </div>
+    </section>
+    <Faq items={faqs} />
+  </main>
+</MarketLayout>

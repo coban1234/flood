@@ -1,0 +1,33 @@
+---
+import MarketLayout from "../layouts/MarketLayout.astro";
+import { vancouver } from "../data/site";
+
+const path = "/about-tidemark/";
+---
+
+<MarketLayout
+  title="About Tidemark Restoration"
+  description="The company across markets. Shared brand, separate local proof."
+  path={path}
+>
+  <main id="main">
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">Company</p>
+        <h1 class="display">About Tidemark</h1>
+        <p>
+          A tidemark is the line water leaves behind. The company removes it — emergency mitigation through finished
+          rebuild, with one crew. The brand is shared. Licences, phones, reviews, and legal entities are not.
+        </p>
+        <p>
+          We answer the phone, we arrive fast, and we prove the building is dry before we close the walls. Rates are
+          published in every market. Equipment is capped at five days.
+        </p>
+        <p>
+          Launch market: <a href={`${vancouver.path}/`}>Metro Vancouver</a>. Market 2: New York, when that entity is
+          live. Seattle is the cheapest proof the model repeats. We will not open a city with a thin page.
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

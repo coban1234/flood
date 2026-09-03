@@ -1,0 +1,25 @@
+---
+import { vancouver } from "../data/site";
+---
+
+<nav class="thumb-bar" id="thumb-bar" aria-label="Call or tell us">
+  <a href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call now</a>
+  <a href={`${vancouver.path}/tell/`}>Tell us what happened</a>
+</nav>
+
+<script is:inline>
+  (function () {
+    var bar = document.getElementById("thumb-bar");
+    if (!bar || window.matchMedia("(min-width: 1024px)").matches) return;
+    var on = false;
+    function tick() {
+      var next = window.scrollY > 200;
+      if (next === on) return;
+      on = next;
+      bar.classList.toggle("is-on", on);
+      document.body.classList.toggle("has-thumb", on);
+    }
+    window.addEventListener("scroll", tick, { passive: true });
+    tick();
+  })();
+</script>

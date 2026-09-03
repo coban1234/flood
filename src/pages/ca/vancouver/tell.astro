@@ -1,0 +1,57 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { firstHourPages } from "../../../data/firstHour";
+
+const path = `${vancouver.path}/tell/`;
+---
+
+<MarketLayout
+  title="Tell us what happened | Metro Vancouver | Tidemark"
+  description="Four taps. Situation-specific instructions while you wait. Call (604) 555-0199."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Tell us what happened" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap" style="max-width:40rem">
+        <p class="eyebrow">1 / 4 · What happened?</p>
+        <h1 class="display">Tell us what happened</h1>
+        <p class="lede">Four taps, no typing. Instructions first. Then the phone.</p>
+        <div class="stack">
+          {
+            firstHourPages.map((p) => (
+              <a class="btn btn--ghost" href={`${vancouver.path}/first-hour/${p.slug}/`} style="width:100%;justify-content:flex-start">
+                {p.title}
+              </a>
+            ))
+          }
+          <a class="btn btn--ghost" href={`${vancouver.path}/first-hour/flooded-basement/`} style="width:100%;justify-content:flex-start">
+            Storm / rain
+          </a>
+          <a class="btn btn--ghost" href={`${vancouver.path}/emergency/`} style="width:100%;justify-content:flex-start">
+            Not sure — call now
+          </a>
+        </div>
+        <p class="eyebrow" style="margin-top:2rem">2 / 4 · Where?</p>
+        <p>House · Strata common area · Condo · Commercial — tell the technician when they answer.</p>
+        <p class="eyebrow" style="margin-top:1.5rem">3 / 4 · How much?</p>
+        <p>Damp · Puddles · Standing water · Multiple rooms</p>
+        <p class="eyebrow" style="margin-top:1.5rem">4 / 4 · Still flowing?</p>
+        <p>If yes, the only next step is the phone.</p>
+        <div class="actions" style="margin-top:1.5rem">
+          <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

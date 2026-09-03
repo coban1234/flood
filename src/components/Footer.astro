@@ -1,0 +1,79 @@
+---
+import { vancouver } from "../data/site";
+import { services } from "../data/services";
+import { builtAreas } from "../data/areas";
+
+const base = vancouver.path;
+const year = new Date().getFullYear();
+---
+
+<div class="cta-band">
+  <div class="wrap">
+    <h2 class="display">Still wet? Call.</h2>
+    <p>
+      We answer 24/7 — a person, not a service. If you would rather not talk, tell us what happened in four taps and we
+      will call you.
+    </p>
+    <div class="actions" style="margin-top:1.25rem">
+      <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
+      <a class="btn btn--ghost" href={`${base}/tell/`} style="border-color:rgb(255 255 255 / 0.25);color:#fff">
+        Tell us what happened
+      </a>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <h2>Services</h2>
+      <ul>
+        {services.map((s) => (
+          <li><a href={`${base}/services/${s.slug}/`}>{s.name}</a></li>
+        ))}
+      </ul>
+    </div>
+    <div>
+      <h2>Buildings & insurance</h2>
+      <ul>
+        <li><a href={`${base}/buildings/`}>Buildings</a></li>
+        <li><a href={`${base}/buildings/stack-leaks/`}>Stack leaks</a></li>
+        <li><a href={`${base}/insurance/`}>Insurance</a></li>
+        <li><a href={`${base}/insurance/without-a-claim/`}>Without a claim</a></li>
+        <li><a href={`${base}/pricing/`}>Pricing</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Areas</h2>
+      <ul>
+        {builtAreas.map((a) => (
+          <li><a href={`${base}/areas/${a.slug}/`}>{a.name}</a></li>
+        ))}
+        <li><a href={`${base}/areas/`}>All coverage</a></li>
+      </ul>
+    </div>
+    <div>
+      <h2>Company</h2>
+      <ul>
+        <li><a href={`${base}/about/`}>About</a></li>
+        <li><a href="/about-tidemark/">About Tidemark</a></li>
+        <li><a href={`${base}/reviews/`}>Reviews</a></li>
+        <li><a href={`${base}/contact/`}>Contact</a></li>
+        <li><a href={`${base}/work/`}>Our work</a></li>
+        <li><a href="/guides/how-long-structural-drying-takes/">Guides</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap footer-meta">
+    <p>
+      {vancouver.addressLine} · {vancouver.hours} · {vancouver.certifications} · {vancouver.licences} ·
+      {vancouver.insurance}
+    </p>
+    <p>
+      © {year} Tidemark Restoration · {vancouver.legalEntity} ·
+      <a href={`${base}/privacy/`}>Privacy</a> ·
+      <a href={`${base}/terms/`}>Terms</a> ·
+      <a href="/">Change city</a>
+    </p>
+  </div>
+</footer>

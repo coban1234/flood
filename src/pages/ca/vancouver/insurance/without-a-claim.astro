@@ -1,0 +1,38 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/insurance/without-a-claim/`;
+---
+
+<MarketLayout
+  title="Water Damage Without a Claim Metro Vancouver | Tidemark"
+  description="Not every loss should become a claim. Published rates, honest scope. Call (604) 555-0199."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Insurance", href: `${SITE_ORIGIN}${vancouver.path}/insurance/` },
+          { name: "Without a claim" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">Out of pocket</p>
+        <h1 class="display">Without a claim</h1>
+        <p>
+          Not every loss should become a claim. If the damage is near your deductible, or you would rather not have a
+          claim on record, our rates are published and we will scope it honestly.
+        </p>
+        <p>
+          <a href={`${vancouver.path}/pricing/`}>See the rate card →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

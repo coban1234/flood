@@ -1,0 +1,14 @@
+---
+interface Props {
+  caption: string;
+  ratio?: "16/9" | "4/5" | "3/2" | "4/3";
+  label: string;
+}
+
+const { caption, ratio = "16/9", label } = Astro.props;
+---
+
+<figure class="photo-slot">
+  <div class="photo-slot__frame" data-ratio={ratio} role="img" aria-label={label}></div>
+  <figcaption>{caption}</figcaption>
+</figure>

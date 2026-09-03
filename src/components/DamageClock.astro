@@ -1,0 +1,39 @@
+---
+import { clockBands } from "../data/mechanics";
+---
+
+<section class="section" aria-labelledby="clock-h">
+  <div class="wrap">
+    <p class="eyebrow">How long has it been wet?</p>
+    <h2 id="clock-h" class="display">The damage clock</h2>
+    <p class="lede">Facts from the hour the water sat — not a countdown. [CLIENT — IICRC S500 technician review.]</p>
+    <div class="clock">
+      {
+        clockBands.map((b) => (
+          <article class="panel" id={`clock-${b.id}`}>
+            <p class="eyebrow">{b.range}</p>
+            <h3>{b.label}</h3>
+            <p>{b.body}</p>
+            {b.salvageable.length > 0 && (
+              <p>
+                <strong>Still salvageable:</strong> {b.salvageable.join(" · ")}
+              </p>
+            )}
+            {b.risk.length > 0 && (
+              <p>
+                <strong>At risk:</strong> {b.risk.join(" · ")}
+              </p>
+            )}
+            {b.lost.length > 0 && (
+              <p>
+                <strong>Typically lost:</strong> {b.lost.join(" · ")}
+              </p>
+            )}
+            <p>Water category: {b.category}</p>
+            <p>{b.close}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

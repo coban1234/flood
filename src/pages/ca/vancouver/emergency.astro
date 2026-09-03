@@ -1,0 +1,79 @@
+---
+import Base from "../../../layouts/Base.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { areas } from "../../../data/areas";
+import { emergencySteps } from "../../../data/content";
+
+const path = `${vancouver.path}/emergency/`;
+const canonical = `${SITE_ORIGIN}${path}`;
+---
+
+<Base
+  title="Emergency Water Damage Metro Vancouver — Call 24/7 | Tidemark"
+  description={`Emergency water damage in Metro Vancouver. Call ${vancouver.phoneDisplay}. 24/7 live answer.`}
+  canonical={canonical}
+  lang="en-CA"
+  systemFonts={true}
+  alternates={[
+    { lang: "en-CA", href: canonical },
+    { lang: "x-default", href: `${SITE_ORIGIN}/` },
+  ]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": ["LocalBusiness", "EmergencyService"],
+      name: "Tidemark Restoration",
+      telephone: vancouver.phoneTel,
+      url: canonical,
+      areaServed: "Metro Vancouver",
+      openingHours: "Mo-Su 00:00-23:59",
+    },
+  ]}
+>
+  <main id="main" class="emergency">
+    <div class="wrap" style="padding:2rem 0 3rem;max-width:40rem">
+      <p class="eyebrow" style="color:#35c3d6">24/7 · Metro Vancouver</p>
+      <h1 class="display" style="color:#f4f1ea">Call now. We're awake.</h1>
+      <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap" style="width:100%;margin:1rem 0">
+        Call {vancouver.phoneDisplay}
+      </a>
+      <p><a href={`${vancouver.path}/areas/`} style="color:#f4f1ea">24/7 · response by area ▸</a></p>
+      <h2 style="margin-top:2rem;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase">Before we arrive</h2>
+      <ol class="list-plain">
+        {
+          emergencySteps.map((s, i) => (
+            <li class="step">
+              <span class="num">0{i + 1}</span>
+              <span>{s}</span>
+            </li>
+          ))
+        }
+      </ol>
+      <p class="caption" style="color:rgb(244 241 234 / 0.55)">IMG-EMER-01 · one frame, under 60 KB, local crew.</p>
+      <h2 style="margin-top:2rem;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase">Coverage</h2>
+      <ul class="list-plain">
+        {
+          areas.map((a) => (
+            <li style="padding:0.35rem 0;border-bottom:1px solid rgb(255 255 255 / 0.12)">
+              {a.name} · Tier {a.tier} · {a.minutes} min
+            </li>
+          ))
+        }
+      </ul>
+      <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap" style="width:100%;margin-top:2rem">
+        Call {vancouver.phoneDisplay}
+      </a>
+    </div>
+  </main>
+</Base>
+
+<style>
+  .emergency {
+    min-height: 100svh;
+    background: #161a1f;
+    color: #f4f1ea;
+  }
+  .emergency .step {
+    border-color: rgb(255 255 255 / 0.12);
+  }
+</style>

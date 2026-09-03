@@ -1,0 +1,36 @@
+---
+import { vancouver } from "../data/site";
+import { areas } from "../data/areas";
+---
+
+<section class="section" aria-labelledby="cover-h">
+  <div class="wrap">
+    <p class="eyebrow">Where we go</p>
+    <h2 id="cover-h" class="display">Coverage by area</h2>
+    <p class="lede">Published worst-case minutes. Outer tiers are slower on purpose — we would rather print the truth.</p>
+    <div class="tiles" style="grid-template-columns:1fr">
+      <table class="rate-table">
+        <thead>
+          <tr>
+            <th scope="col">Area</th>
+            <th scope="col">Tier</th>
+            <th scope="col">Worst-case</th>
+          </tr>
+        </thead>
+        <tbody>
+          {
+            areas.map((a) => (
+              <tr>
+                <td>
+                  {a.built ? <a href={`${vancouver.path}/areas/${a.slug}/`}>{a.name}</a> : a.name}
+                </td>
+                <td>{a.tier}</td>
+                <td>{a.minutes} min</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,99 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PhotoSlot from "../../../../components/PhotoSlot.astro";
+import DryLog from "../../../../components/DryLog.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { jobs, getJob } from "../../../../data/jobs";
+
+export function getStaticPaths() {
+  return jobs.map((j) => ({ params: { slug: j.slug } }));
+}
+
+const job = getJob(Astro.params.slug!);
+if (!job) throw new Error("Unknown job");
+const path = `${vancouver.path}/work/${job.slug}/`;
+---
+
+<MarketLayout
+  title={`${job.title} | Metro Vancouver | Tidemark`}
+  description={job.summary}
+  path={path}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "ImageObject",
+      caption: job.heroCaption,
+      contentLocation: job.areaSlug,
+    },
+  ]}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Work", href: `${SITE_ORIGIN}${vancouver.path}/work/` },
+          { name: job.title },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <PhotoSlot ratio="16/9" caption={job.heroCaption} label={job.title} />
+        <p class="eyebrow" style="margin-top:1.5rem">{job.type}</p>
+        <h1 class="display">{job.title}</h1>
+        <p class="lede">{job.summary}</p>
+        <table class="rate-table">
+          <tbody>
+            <tr><th scope="row">Loss</th><td>{job.loss}</td></tr>
+            <tr><th scope="row">Property</th><td>{job.property}</td></tr>
+            <tr><th scope="row">Category</th><td>{job.category}</td></tr>
+            <tr><th scope="row">Affected</th><td>{job.affected}</td></tr>
+            <tr><th scope="row">Call received</th><td>{job.callReceived}</td></tr>
+            <tr><th scope="row">On site</th><td>{job.onSite}</td></tr>
+            <tr><th scope="row">Equipment</th><td>{job.equipment}</td></tr>
+            <tr><th scope="row">Dry by</th><td>{job.dryBy}</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap prose">
+        {job.narrative.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+    <section class="section section--tint">
+      <div class="wrap">
+        <h2 class="display">Moisture readout</h2>
+        <div class="dry-log">
+          {
+            job.readings.map((r) => (
+              <article class="panel">
+                <p class="eyebrow">Day {r.day}</p>
+                <h3>{r.value}</h3>
+                <p>{r.note}</p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <DryLog />
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">Before / after</h2>
+        <div class="tiles">
+          <PhotoSlot ratio="3/2" caption="BEFORE" label="Before photograph" />
+          <PhotoSlot ratio="3/2" caption="AFTER" label="After photograph" />
+        </div>
+        <p>
+          <a href={`${vancouver.path}/services/${job.serviceSlug}/`}>Service →</a>
+          ·
+          <a href={`${vancouver.path}/areas/${job.areaSlug}/`}>Area →</a>
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

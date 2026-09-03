@@ -1,0 +1,22 @@
+---
+import { dryingDays, day2Note } from "../data/mechanics";
+---
+
+<section class="section section--tint" aria-labelledby="dry-h">
+  <div class="wrap">
+    <p class="eyebrow">Dry by day 5</p>
+    <h2 id="dry-h" class="display">Readings to target</h2>
+    <p class="lede">{day2Note}</p>
+    <div class="dry-log">
+      {
+        dryingDays.map((d) => (
+          <article class="panel">
+            <p class="eyebrow">Day {d.day}</p>
+            <h3>{d.reading}{d.day === 5 ? " · target" : ""}</h3>
+            <p>{d.caption}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

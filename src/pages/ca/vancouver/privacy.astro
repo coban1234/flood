@@ -1,0 +1,34 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+
+const path = `${vancouver.path}/privacy/`;
+---
+
+<MarketLayout
+  title="Privacy | Tidemark Restoration Metro Vancouver"
+  description="PIPEDA-oriented privacy notice for the Vancouver market. [CLIENT — counsel review.]"
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Privacy" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <h1 class="display">Privacy</h1>
+        <p>
+          We collect what a dispatch ticket needs: what happened, where, and how to reach you. Photographs of a
+          customer's property require separate written permission. CASL: marketing consent is unchecked by default.
+        </p>
+        <p>PIPEDA applies in Canada. This page is jurisdiction-specific. [CLIENT — replace with counsel-approved text.]</p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

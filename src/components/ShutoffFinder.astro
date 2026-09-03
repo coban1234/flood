@@ -1,0 +1,29 @@
+---
+import { shutoffTypes } from "../data/mechanics";
+---
+
+<section class="section" aria-labelledby="shut-h">
+  <div class="wrap">
+    <p class="eyebrow">Shutoff finder</p>
+    <h2 id="shut-h" class="display">Where is the valve?</h2>
+    <div class="shutoff">
+      {
+        shutoffTypes.map((t) => (
+          <article class="panel" id={t.id}>
+            <h3>{t.name}</h3>
+            <p>
+              <strong>Likely locations</strong>
+            </p>
+            <ol>
+              {t.where.map((w) => (
+                <li>{w}</li>
+              ))}
+            </ol>
+            <p>{t.valve}</p>
+            <p>{t.building}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

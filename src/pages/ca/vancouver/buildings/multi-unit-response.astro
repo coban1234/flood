@@ -1,0 +1,39 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/buildings/multi-unit-response/`;
+---
+
+<MarketLayout
+  title="Multi-Unit Water Damage Response Metro Vancouver | Tidemark"
+  description="How one loss across three units is scoped, sequenced, and billed. Strata and rental."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Buildings", href: `${SITE_ORIGIN}${vancouver.path}/buildings/` },
+          { name: "Multi-unit response" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">One loss, several doors</p>
+        <h1 class="display">Multi-unit response</h1>
+        <p>
+          Scope is per unit and per common property. Sequence is safety, then the wettest cavity, then the unit that
+          still has to sleep there. Billing follows the card for mitigation. Rebuild is written per opening.
+        </p>
+        <p>
+          We do not wait for every owner to be in the group chat. We need access. The board or manager is the point of
+          contact: [CLIENT]. Overnight labour is published because stacked buildings fail at 2am.
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

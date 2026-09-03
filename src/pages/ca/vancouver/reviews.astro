@@ -1,0 +1,47 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { reviews } from "../../../data/content";
+
+const path = `${vancouver.path}/reviews/`;
+---
+
+<MarketLayout
+  title="Tidemark Restoration Reviews Metro Vancouver"
+  description="Reviews for the Vancouver market only. They do not transfer to New York."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Reviews" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">This market only</p>
+        <h1 class="display">Reviews</h1>
+        <p class="lede">
+          Real reviews with attribution. Link to this market's profile [CLIENT]. Reviews do not transfer between
+          markets. We do not render aggregate stars until the count is real.
+        </p>
+        <div class="tiles">
+          {
+            reviews.map((r) => (
+              <article class="panel">
+                <p>“{r.quote}”</p>
+                <p class="caption">
+                  {r.name} · {r.detail}
+                </p>
+              </article>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

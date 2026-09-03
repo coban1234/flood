@@ -1,0 +1,39 @@
+---
+import {
+  afterHours,
+  billingTerms,
+  callouts,
+  category3,
+  equipment,
+  equipmentExample,
+  labour,
+  lastUpdated,
+  rateSameNote,
+  treatments,
+} from "../data/rates";
+import RateTable from "./RateTable.astro";
+
+interface Props {
+  areaName?: string;
+}
+
+const areaName = Astro.props.areaName;
+---
+
+<div class="stack" id="rate-card">
+  <p class="lede">
+    {areaName ? rateSameNote.replace("this area", areaName) : rateSameNote} Last updated {lastUpdated}. [CLIENT — verify
+    against cost before publication.]
+  </p>
+  <RateTable title="Call-outs" rows={callouts} />
+  <RateTable title="Drying equipment, per 24 hours — capped at five days" rows={equipment} />
+  <p>{equipmentExample}</p>
+  <RateTable title="Labour, regular hours (Mon–Fri 08:00–17:00)" rows={labour} />
+  <RateTable title="After-hours and emergency labour" rows={afterHours} />
+  <RateTable title="Category 3 / sewage" rows={category3} />
+  <RateTable title="Treatments, supplies, demolition" rows={treatments} />
+  <h3>Billing terms</h3>
+  <ul>
+    {billingTerms.map((t) => <li>{t}</li>)}
+  </ul>
+</div>

@@ -1,0 +1,140 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PhotoSlot from "../../../../components/PhotoSlot.astro";
+import Faq from "../../../../components/Faq.astro";
+import DryLog from "../../../../components/DryLog.astro";
+import DamageClock from "../../../../components/DamageClock.astro";
+import DropletTrace from "../../../../components/DropletTrace.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { services, getService } from "../../../../data/services";
+import { launchJobs } from "../../../../data/jobs";
+import { homeRatePreview } from "../../../../data/rates";
+
+export function getStaticPaths() {
+  return services.map((s) => ({ params: { slug: s.slug } }));
+}
+
+const { slug } = Astro.params;
+const service = getService(slug!);
+if (!service) throw new Error("Unknown service");
+
+const path = `${vancouver.path}/services/${service.slug}/`;
+const siblings = services.filter((s) => s.slug !== service.slug).slice(0, 2);
+const job = launchJobs.find((j) => j.serviceSlug === service.slug) ?? launchJobs[0];
+
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    name: service.name,
+    provider: { "@type": "LocalBusiness", name: "Tidemark Restoration", telephone: vancouver.phoneTel },
+    areaServed: "Metro Vancouver",
+  },
+];
+---
+
+<MarketLayout
+  title={`${service.keyword} | Tidemark Restoration`}
+  description={`${service.name} in Metro Vancouver. ${service.intro} Call ${vancouver.phoneDisplay}.`}
+  path={path}
+  jsonLd={jsonLd}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Services", href: `${SITE_ORIGIN}${vancouver.path}/services/` },
+          { name: service.name },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">Metro Vancouver · 24/7</p>
+          <h1 class="display">{service.h1}</h1>
+          <p class="lede">{service.intro}</p>
+          <div class="actions">
+            <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
+            <a class="btn btn--ghost" href={`${vancouver.path}/first-hour/${service.firstHour}/`}>What to do first</a>
+          </div>
+        </div>
+        <PhotoSlot
+          ratio="16/9"
+          caption={`FIG. S — ${service.tile.toUpperCase()} · METRO VANCOUVER`}
+          label={`${service.name} hero photograph, local crew and equipment`}
+        />
+      </div>
+    </section>
+
+    {service.slug === "structural-drying" && <DryLog />}
+    {(service.slug === "mould-remediation" || service.slug === "sewage-category-3") && <DamageClock />}
+    {(service.slug === "basement-flooding" || service.slug === "burst-pipe") && <DropletTrace />}
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">On the job</h2>
+        <div class="tiles">
+          <PhotoSlot ratio="4/3" caption="FIG. A — IN PROGRESS" label="In-progress photograph" />
+          <PhotoSlot ratio="4/3" caption="FIG. B — IN PROGRESS" label="Second in-progress photograph" />
+          <PhotoSlot ratio="4/3" caption="FIG. C — DETAIL" label="Detail or readout photograph" />
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--tint">
+      <div class="wrap page-grid">
+        <div>
+          <h2 class="display">Spec plate</h2>
+          <ul>
+            {service.spec.map((line) => <li>{line}</li>)}
+          </ul>
+        </div>
+        <aside class="night-card">
+          <p class="eyebrow">Cost</p>
+          <table class="rate-table">
+            <tbody>
+              {
+                homeRatePreview.map((r) => (
+                  <tr>
+                    <td style="color:#f4f1ea">{r.item}</td>
+                    <td style="color:#f4f1ea">{r.rate}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+          <p><a href={`${vancouver.path}/pricing/`} style="color:#fff">Full rate card →</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">A documented job</h2>
+        <a href={`${vancouver.path}/work/${job.slug}/`}>{job.title} →</a>
+      </div>
+    </section>
+
+    <Faq items={[...service.faqs]} />
+
+    <section class="section">
+      <div class="wrap">
+        <p>
+          Also:
+          {
+            siblings.map((s, i) => (
+              <>
+                {i > 0 && " · "}
+                <a href={`${vancouver.path}/services/${s.slug}/`}>{s.name}</a>
+              </>
+            ))
+          }
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

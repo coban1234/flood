@@ -1,0 +1,42 @@
+---
+import Base from "../../layouts/Base.astro";
+import { SITE_ORIGIN, vancouver, usMarkets, getUsMarket } from "../../data/site";
+
+export function getStaticPaths() {
+  return usMarkets.map((m) => ({ params: { market: m.slug } }));
+}
+
+const market = getUsMarket(Astro.params.market!);
+if (!market) throw new Error("Unknown market");
+
+const path = `/us/${market.slug}/`;
+const canonical = `${SITE_ORIGIN}${path}`;
+---
+
+<Base
+  title={`Tidemark Restoration ${market.name}`}
+  description={`${market.name} is not open yet. Metro Vancouver is live. We will not publish a thin city page.`}
+  canonical={canonical}
+  lang="en-US"
+  noindex={true}
+  alternates={[
+    { lang: "en-CA", href: `${SITE_ORIGIN}${vancouver.path}/` },
+    { lang: "en-US", href: canonical },
+    { lang: "x-default", href: `${SITE_ORIGIN}/` },
+  ]}
+>
+  <main id="main" class="chooser">
+    <div class="wrap" style="max-width:36rem">
+      <p class="eyebrow">{market.region}</p>
+      <h1 class="display">{market.name} is not open yet.</h1>
+      <p class="lede">
+        A market ships when it has a local phone, a real address, licences, and photographs. This URL is a door, not a
+        fake office.
+      </p>
+      <div class="actions">
+        <a class="btn btn--call" href="/">Choose a city</a>
+        <a class="btn btn--ghost" href={`${vancouver.path}/`}>Metro Vancouver is live</a>
+      </div>
+    </div>
+  </main>
+</Base>

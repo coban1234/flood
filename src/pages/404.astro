@@ -1,0 +1,18 @@
+---
+import Base from "../layouts/Base.astro";
+import { SITE_ORIGIN, vancouver } from "../data/site";
+---
+
+<Base title="Page not found | Tidemark" description="That page is not on this site." canonical={`${SITE_ORIGIN}/404/`} noindex={true}>
+  <main id="main" style="min-height:70svh;display:grid;place-items:center;padding:2rem">
+    <div>
+      <p class="eyebrow">404</p>
+      <h1 class="display">This page is not here.</h1>
+      <p class="lede">If water is moving, do not search. Call.</p>
+      <div class="actions">
+        <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`}>Call {vancouver.phoneDisplay}</a>
+        <a class="btn btn--ghost" href={`${vancouver.path}/`}>Metro Vancouver home</a>
+      </div>
+    </div>
+  </main>
+</Base>

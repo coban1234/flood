@@ -1,0 +1,52 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import Coverage from "../../../components/Coverage.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+
+const path = `${vancouver.path}/contact/`;
+---
+
+<MarketLayout
+  title="Contact Tidemark Restoration Metro Vancouver"
+  description={`24/7 emergency line ${vancouver.phoneDisplay}. Buildings, insurance, and general.`}
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Contact" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">24/7</p>
+        <h1 class="display">Contact</h1>
+        <div class="tiles">
+          <article class="panel">
+            <h2>Emergency</h2>
+            <p>
+              <a href={`tel:${vancouver.phoneTel}`}>{vancouver.phoneDisplay}</a> · live answer
+            </p>
+          </article>
+          <article class="panel">
+            <h2>Buildings and property managers</h2>
+            <p>[CLIENT — dedicated email and named person]</p>
+          </article>
+          <article class="panel">
+            <h2>Insurance and adjusters</h2>
+            <p>[CLIENT — adjuster desk]</p>
+          </article>
+          <article class="panel">
+            <h2>General</h2>
+            <p>[CLIENT — office phone and hours] · {vancouver.addressLine}</p>
+          </article>
+        </div>
+      </div>
+    </section>
+    <Coverage />
+  </main>
+</MarketLayout>

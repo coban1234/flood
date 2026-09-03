@@ -1,0 +1,43 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { services } from "../../../../data/services";
+
+const path = `${vancouver.path}/services/`;
+---
+
+<MarketLayout
+  title="Water Damage Services Metro Vancouver | Tidemark Restoration"
+  description="Nine restoration services in Metro Vancouver. Extraction through rebuild. Call (604) 555-0199."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Services" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Metro Vancouver</p>
+        <h1 class="display">Services</h1>
+        <p class="lede">Emergency through rebuild, one crew. Photographs carry the work. Call if water is moving.</p>
+        <div class="tiles">
+          {
+            services.map((s) => (
+              <a class="tile" href={`${path}${s.slug}/`}>
+                <div class="tile__photo"></div>
+                <div class="tile__label">{s.name}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

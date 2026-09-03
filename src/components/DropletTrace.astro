@@ -1,0 +1,27 @@
+---
+import { traces } from "../data/mechanics";
+---
+
+<section class="section section--tint" aria-labelledby="trace-h">
+  <div class="wrap">
+    <p class="eyebrow">Where the water went</p>
+    <h2 id="trace-h" class="display">Four source paths</h2>
+    <div class="trace">
+      {
+        traces.map((t) => (
+          <article class="panel" id={`trace-${t.id}`}>
+            <h3>{t.name}</h3>
+            <ol>
+              {t.path.map((p) => (
+                <li>{p}</li>
+              ))}
+            </ol>
+            <p>
+              <strong>What looks fine but isn’t:</strong> {t.hidden.join(" · ")}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

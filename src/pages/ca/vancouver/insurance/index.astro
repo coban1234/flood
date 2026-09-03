@@ -1,0 +1,45 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/insurance/`;
+---
+
+<MarketLayout
+  title="Water Damage Insurance Claims Metro Vancouver | Tidemark"
+  description="What we document, how the file is assembled, adjuster coordination, and deductibles in BC. Call (604) 555-0199."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Insurance" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">British Columbia</p>
+        <h1 class="display">Insurance</h1>
+        <p>
+          We photograph, meter, and log. The file is what an adjuster can read: source, category, affected materials,
+          daily readings, and a written rebuild scope after the log closes. Xactimate capability [CLIENT].
+        </p>
+        <p>
+          Deductibles, depreciation, and whether sewage backup is endorsed are policy questions. We do not bind
+          coverage. Typical residential water damage in BC may cover sudden and accidental discharge and may exclude
+          gradual seepage, groundwater, and some backups — read your wording. [CLIENT — counsel review.]
+        </p>
+        <p>
+          Insurance work is billed on the insurer's programme rates, not the public card. Out-of-pocket work uses the
+          published card.
+        </p>
+        <p><a href={`${vancouver.path}/insurance/without-a-claim/`}>Without a claim →</a></p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

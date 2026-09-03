@@ -1,0 +1,101 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import ShutoffFinder from "../../../../components/ShutoffFinder.astro";
+import DamageClock from "../../../../components/DamageClock.astro";
+import DropletTrace from "../../../../components/DropletTrace.astro";
+import PhotoSlot from "../../../../components/PhotoSlot.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { firstHourPages, getFirstHour } from "../../../../data/firstHour";
+
+export function getStaticPaths() {
+  return firstHourPages.map((p) => ({ params: { slug: p.slug } }));
+}
+
+const page = getFirstHour(Astro.params.slug!);
+if (!page) throw new Error("Unknown first-hour page");
+
+const path = `${vancouver.path}/first-hour/${page.slug}/`;
+const howTo = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  name: `${page.title}: what to do first`,
+  step: page.steps.map((s, i) => ({
+    "@type": "HowToStep",
+    position: i + 1,
+    text: s.text,
+  })),
+};
+---
+
+<MarketLayout
+  title={`${page.title}: What To Do First | Metro Vancouver | Tidemark`}
+  description={`${page.steps.map((s) => s.text).join(" ")} Call ${vancouver.phoneDisplay}.`}
+  path={path}
+  jsonLd={[howTo]}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "First hour", href: `${SITE_ORIGIN}${vancouver.path}/first-hour/` },
+          { name: page.title },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap" style="max-width:42rem">
+        <p class="eyebrow">First hour</p>
+        <h1 class="display">{page.h1}</h1>
+        {
+          page.steps.map((s) => (
+            <div class="step">
+              <span class="num">{s.n}</span>
+              <div>
+                <p style="margin:0;font-weight:600">{s.text}</p>
+                {s.extra && <p style="margin:0.3rem 0 0">{s.extra}</p>}
+              </div>
+            </div>
+          ))
+        }
+        <div class="actions" style="margin-top:1.5rem">
+          <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">{vancouver.phoneDisplay}</a>
+        </div>
+      </div>
+    </section>
+
+    <ShutoffFinder />
+    {page.slug === "ceiling-leak" && <DropletTrace />}
+    <DamageClock />
+
+    <section class="section section--tint">
+      <div class="wrap">
+        <h2 class="display">Do not</h2>
+        <ul>
+          {page.dont.map((d) => <li>{d}</li>)}
+        </ul>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="wrap page-grid">
+        <div>
+          <h2 class="display">On arrival</h2>
+          <p class="lede">{page.arrival}</p>
+          <PhotoSlot ratio="3/2" caption="FIG. FH — INSTRUCTIONAL" label="Instructional photograph" />
+        </div>
+        <div>
+          <h2 class="display">Is this a claim?</h2>
+          <p class="lede">{page.claim}</p>
+          <p>
+            <a href={`${vancouver.path}/services/${page.serviceSlug}/`}>Service page →</a>
+            ·
+            <a href={`${vancouver.path}/emergency/`}>Emergency →</a>
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

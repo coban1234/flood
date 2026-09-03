@@ -1,0 +1,41 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import DropletTrace from "../../../../components/DropletTrace.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/buildings/stack-leaks/`;
+---
+
+<MarketLayout
+  title="Stack Leak Response Metro Vancouver | Tidemark Restoration"
+  description="How a stack leak moves through a low-rise strata, and how we sequence three units in one night."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Buildings", href: `${SITE_ORIGIN}${vancouver.path}/buildings/` },
+          { name: "Stack leaks" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap" style="max-width:42rem">
+        <p class="eyebrow">Multi-unit</p>
+        <h1 class="display">Stack leaks</h1>
+        <p class="lede">
+          A third-floor waste or supply failure is a corridor job by morning. We map wet units, contain common property,
+          and extract before the elevator rush.
+        </p>
+        <p>
+          Diagnosis is a meter in the cavity, not a stain on the ceiling. Coordination is keys, quiet hours, and a file
+          the council can read. Call {vancouver.phoneDisplay} if water is still moving.
+        </p>
+      </div>
+    </section>
+    <DropletTrace />
+  </main>
+</MarketLayout>

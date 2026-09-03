@@ -1,0 +1,55 @@
+---
+import Base from "./Base.astro";
+import AlertBand from "../components/AlertBand.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ThumbBar from "../components/ThumbBar.astro";
+import { SITE_ORIGIN, vancouver } from "../data/site";
+
+interface Props {
+  title: string;
+  description: string;
+  path: string;
+  jsonLd?: unknown[];
+  noindex?: boolean;
+}
+
+const { title, description, path, jsonLd = [], noindex = false } = Astro.props;
+const canonical = `${SITE_ORIGIN}${path}`;
+const org = {
+  "@context": "https://schema.org",
+  "@type": ["LocalBusiness", "EmergencyService"],
+  "@id": `${SITE_ORIGIN}/#org`,
+  name: "Tidemark Restoration",
+  telephone: vancouver.phoneTel,
+  url: `${SITE_ORIGIN}${vancouver.path}/`,
+  areaServed: { "@type": "AdministrativeArea", name: "Metro Vancouver" },
+  availableLanguage: "en-CA",
+  openingHours: "Mo-Su 00:00-23:59",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Vancouver",
+    addressRegion: "BC",
+    addressCountry: "CA",
+  },
+};
+---
+
+<Base
+  title={title}
+  description={description}
+  canonical={canonical}
+  lang={vancouver.locale}
+  alternates={[
+    { lang: "en-CA", href: canonical },
+    { lang: "x-default", href: `${SITE_ORIGIN}/` },
+  ]}
+  jsonLd={[org, ...jsonLd]}
+  noindex={noindex}
+>
+  <AlertBand />
+  <Header />
+  <slot />
+  <Footer />
+  <ThumbBar />
+</Base>

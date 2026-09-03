@@ -1,0 +1,142 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import PhotoSlot from "../../../../components/PhotoSlot.astro";
+import RateCard from "../../../../components/RateCard.astro";
+import Faq from "../../../../components/Faq.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { builtAreas, getArea } from "../../../../data/areas";
+import { services } from "../../../../data/services";
+import { jobs } from "../../../../data/jobs";
+import { reviews as reviewList } from "../../../../data/content";
+
+export function getStaticPaths() {
+  return builtAreas.map((a) => ({ params: { area: a.slug } }));
+}
+
+const area = getArea(Astro.params.area!);
+if (!area || !area.built) throw new Error("Area not built");
+
+const path = `${vancouver.path}/areas/${area.slug}/`;
+const job = jobs.find((j) => j.slug === area.jobSlug);
+const localReviews = reviewList.filter((r) => r.area === area.name);
+const faqs = [
+  {
+    q: `How fast is water damage restoration in ${area.name}?`,
+    a: `Tier ${area.tier}. Worst-case response is ${area.minutes} minutes. Call ${vancouver.phoneDisplay}.`,
+  },
+  {
+    q: `Do you charge more in ${area.name}?`,
+    a: "No. These are our rates across Metro Vancouver. What changes is drive time, included in labour.",
+  },
+  {
+    q: `Is ${area.name} covered overnight?`,
+    a: "Yes. 24/7. Overnight labour is on the card because someone has to be awake.",
+  },
+  {
+    q: "What services do you offer here?",
+    a: "All nine — extraction through rebuild. Tiles below.",
+  },
+];
+---
+
+<MarketLayout
+  title={`Water Damage Restoration ${area.name} | ${area.minutes}-Min Response`}
+  description={`24/7 water damage restoration in ${area.name}. ${area.minutes}-minute worst-case response. Rates published. Call ${vancouver.phoneDisplay}.`}
+  path={path}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "Offer",
+      priceCurrency: "CAD",
+      priceRange: "$200-$400+",
+      areaServed: area.name,
+    },
+  ]}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Areas", href: `${SITE_ORIGIN}${vancouver.path}/areas/` },
+          { name: area.name },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="eyebrow">
+            Response · Tier {area.tier} · {area.minutes} minutes
+          </p>
+          <h1 class="display">Water damage restoration in {area.name}</h1>
+          <p class="status"><span class="dot"></span>2 crews on call now</p>
+          <div class="actions">
+            <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
+          </div>
+        </div>
+        <PhotoSlot
+          ratio="3/2"
+          caption={`FIG. AREA — A REAL ${area.name.toUpperCase()} JOB`}
+          label={`Real job photograph in ${area.name} — required before this page is considered shot-complete`}
+        />
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap prose">
+        <h2 class="display">Local building stock</h2>
+        {area.local.map((p) => <p>{p}</p>)}
+      </div>
+    </section>
+    <section class="section section--tint">
+      <div class="wrap">
+        <h2 class="display">Services here</h2>
+        <div class="tiles">
+          {
+            services.map((s) => (
+              <a class="tile" href={`${vancouver.path}/services/${s.slug}/`}>
+                <div class="tile__label">{s.tile}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap">
+        <h2 class="display">Full rate card</h2>
+        <RateCard areaName={area.name} />
+      </div>
+    </section>
+    {
+      job && (
+        <section class="section section--tint">
+          <div class="wrap">
+            <h2 class="display">A job in {area.name}</h2>
+            <p>
+              <a href={`${vancouver.path}/work/${job.slug}/`}>{job.title} →</a>
+            </p>
+          </div>
+        </section>
+      )
+    }
+    {
+      localReviews.length > 0 && (
+        <section class="section">
+          <div class="wrap">
+            <h2 class="display">Reviews from this area</h2>
+            {localReviews.map((r) => (
+              <article class="panel">
+                <p>“{r.quote}”</p>
+                <p class="caption">{r.name} · {r.detail}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+    <Faq items={faqs} />
+  </main>
+</MarketLayout>

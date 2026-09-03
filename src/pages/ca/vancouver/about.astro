@@ -1,0 +1,48 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import PhotoSlot from "../../../components/PhotoSlot.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+
+const path = `${vancouver.path}/about/`;
+---
+
+<MarketLayout
+  title="About Tidemark Restoration Metro Vancouver"
+  description="Who picks up at 3am in Metro Vancouver. IICRC numbers, licences, equipment, crew."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "About" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">Metro Vancouver</p>
+        <h1 class="display">About</h1>
+        <p>
+          We answer the phone, we arrive fast, and we prove the building is dry before we close the walls. 24/7 water
+          damage restoration — with our rates published, not quoted after the fact.
+        </p>
+        <p>
+          Who picks up at 3am: a person who can dispatch, not a voicemail. [CLIENT — story, portraits, equipment
+          inventory.]
+        </p>
+        <p>{vancouver.certifications} · {vancouver.licences} · {vancouver.insurance}</p>
+        <p><a href="/about-tidemark/">The company across markets →</a></p>
+      </div>
+    </section>
+    <section class="section">
+      <div class="wrap tiles">
+        <PhotoSlot ratio="3/2" caption="CREW" label="Crew photograph" />
+        <PhotoSlot ratio="3/2" caption="PORTRAIT" label="Portrait" />
+        <PhotoSlot ratio="3/2" caption="EQUIPMENT" label="Equipment inventory photograph" />
+      </div>
+    </section>
+  </main>
+</MarketLayout>

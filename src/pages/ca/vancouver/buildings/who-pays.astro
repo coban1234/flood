@@ -1,0 +1,44 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/buildings/who-pays/`;
+---
+
+<MarketLayout
+  title="Who Pays for Strata Water Damage in BC | Tidemark"
+  description="Strata corporation vs owner, deductibles, and chargebacks. General guidance, not legal advice."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Buildings", href: `${SITE_ORIGIN}${vancouver.path}/buildings/` },
+          { name: "Who pays" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <p class="eyebrow">British Columbia</p>
+        <h1 class="display">Who pays</h1>
+        <p>
+          In BC, responsibility often splits between the strata corporation (common property, some building systems) and
+          the owner (the strata lot, some fixtures), subject to bylaws, the Strata Property Act, deductibles, and
+          chargebacks. That split is a legal question.
+        </p>
+        <p>
+          We document what was wet, what we did, and what the log says. We do not decide who writes the cheque. [CLIENT
+          — must be reviewed by counsel in this jurisdiction. This page is general guidance and is not legal advice.]
+        </p>
+        <p>
+          New York uses condo, co-op, HO-6, and board language. That copy is not this page. Do not share this text
+          across markets.
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>

@@ -1,0 +1,16 @@
+---
+import { vancouver } from "../data/site";
+
+interface Props {
+  kicker?: string;
+}
+
+const kicker = Astro.props.kicker ?? `Water coming in right now? Call ${vancouver.phoneDisplay} — 24/7, live answer.`;
+---
+
+<div class="banner">
+  <div class="wrap banner__inner">
+    <p class="banner__kicker">{kicker}</p>
+    <a class="banner__call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
+  </div>
+</div>

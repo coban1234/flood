@@ -1,0 +1,51 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import DropletTrace from "../../../../components/DropletTrace.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+
+const path = `${vancouver.path}/buildings/`;
+const pages = [
+  { href: "stack-leaks/", title: "Stack leaks", body: "The most common multi-unit loss." },
+  { href: "multi-unit-response/", title: "Multi-unit response", body: "One loss, three units, one sequence." },
+  { href: "who-pays/", title: "Who pays", body: "Strata corporation vs owner. Not legal advice." },
+];
+---
+
+<MarketLayout
+  title="Strata Water Damage Metro Vancouver | Tidemark Restoration"
+  description="Stack leaks, multi-unit response, and who pays in BC strata. Dedicated path for boards and property managers."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Buildings" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Strata · boards · property managers</p>
+        <h1 class="display">Buildings</h1>
+        <p class="lede">
+          Vocabulary is strata here. The URL stays /buildings/ when New York opens. A named person for boards: [CLIENT
+          — buildings email].
+        </p>
+        <div class="tiles">
+          {
+            pages.map((p) => (
+              <a class="tile" href={p.href}>
+                <div class="tile__label">{p.title}</div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <DropletTrace />
+  </main>
+</MarketLayout>

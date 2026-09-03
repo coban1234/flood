@@ -1,0 +1,49 @@
+---
+import MarketLayout from "../../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import Coverage from "../../../../components/Coverage.astro";
+import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { builtAreas } from "../../../../data/areas";
+
+const path = `${vancouver.path}/areas/`;
+---
+
+<MarketLayout
+  title="Water Damage Restoration Areas Metro Vancouver | Tidemark"
+  description="Service areas across Metro Vancouver and the Fraser Valley. Tiered response times. Call (604) 555-0199."
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Areas" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Tier 1 at launch</p>
+        <h1 class="display">Service areas</h1>
+        <p class="lede">
+          Six core municipalities have full pages. Outer tiers are listed with honest minutes. We do not publish a thin
+          page to look bigger.
+        </p>
+        <div class="tiles">
+          {
+            builtAreas.map((a) => (
+              <a class="tile" href={`${path}${a.slug}/`}>
+                <div class="tile__label">
+                  {a.name} · {a.minutes} min
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </div>
+    </section>
+    <Coverage />
+  </main>
+</MarketLayout>

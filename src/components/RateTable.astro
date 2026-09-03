@@ -1,0 +1,28 @@
+---
+interface Props {
+  title: string;
+  rows: { item: string; rate: string }[];
+}
+
+const { title, rows } = Astro.props;
+---
+
+<section class="stack" aria-labelledby={title.replace(/\s+/g, "-")}>
+  <h3 id={title.replace(/\s+/g, "-")}>{title}</h3>
+  <table class="rate-table">
+    <thead>
+      <tr>
+        <th scope="col">Item</th>
+        <th scope="col">Rate</th>
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((r) => (
+        <tr>
+          <td>{r.item}</td>
+          <td>{r.rate}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</section>

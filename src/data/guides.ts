@@ -1,0 +1,115 @@
+export const guides = [
+  {
+    slug: "how-long-structural-drying-takes",
+    title: "How long does structural drying actually take?",
+    target: "how long does water damage drying take",
+    date: "2026-09-01",
+    dek: "Surfaces mislead. Cavities decide. Three to five days is common when extraction is prompt — and longer when it is not.",
+    body: [
+      "People ask for a number. The honest one is a range, because the building is not a hairdryer.",
+      "When standing water is extracted the same night, many Metro Vancouver houses and townhouses close in three to five days. That is not a promise. It is what the log looks like when the first readings are taken while the water is still a drying job.",
+      "Surfaces read dry days before cavities do. If a company pulls equipment because the floor feels fine, the callback, the odour, and the mould are already scheduled. We log marked points until every one of them meets target. Equipment billing is capped at five days without written approval — that cap is discipline, not a discount trick.",
+      "Psychrometrics — temperature, humidity, and airflow — set the equipment count. More machines are not always faster. The wrong count just bills you.",
+      "Hardwood, cabinets, and insulation each have their own clock. The damage-clock bands on this site are the IICRC S500-shaped version of that story, written for a stressed reader. [CLIENT — technician review before publication.]",
+      "If you want a single question to ask any restoration company: will you give me the drying log, point by point, each day, until you close?",
+    ],
+  },
+  {
+    slug: "category-1-2-3-water",
+    title: "Category 1, 2, and 3 water — what the difference means",
+    target: "category 3 water damage",
+    date: "2026-09-01",
+    dek: "The category is about contamination, not how scared you feel. Category 3 is a health job.",
+    body: [
+      "Category 1 starts clean — a potable supply line, a sink. It does not stay Category 1 because time passed. It degrades.",
+      "Category 2 is contaminated. Dishwasher discharge, washing-machine overflow, groundwater that picked things up. You should not treat it like drinking water.",
+      "Category 3 is grossly contaminated: sewage, river or seawater flooding, or water that sat long enough to become a health risk. Do not mop it. Do not vacuum it with a household machine. Leave, photograph from dry ground, and call.",
+      "Porous materials that took Category 3 water often cannot be saved. That is not upselling. It is disposal law and health. We will show you what comes out before we pull it.",
+      "Pricing follows the hazard. Category 3 labour is published on the rate card because PPE, containment, and disposal are real. Fuel surcharges are not.",
+    ],
+  },
+  {
+    slug: "claim-or-pay-out-of-pocket",
+    title: "Should you claim it, or pay out of pocket?",
+    target: "water damage insurance deductible",
+    date: "2026-09-01",
+    dek: "Not every loss should become a claim. Published rates exist so you can do the arithmetic.",
+    body: [
+      "If the likely invoice sits near your deductible, a claim may cost you a mark on the record for little money back. That is your decision. We will scope it honestly either way.",
+      "Insurance work is billed on the insurer's programme rates, not the public card. Out-of-pocket work uses the published card. We say that on the pricing page so nobody is surprised.",
+      "Sewage backup in British Columbia often needs a specific endorsement. A clean burst pipe is a different conversation. We document. We do not pretend to bind coverage.",
+      "This guide is market-neutral on purpose. Legal and policy details live on each market's insurance pages. They are not the same in BC and New York.",
+    ],
+  },
+  {
+    slug: "will-hardwood-survive",
+    title: "Will my hardwood survive?",
+    target: "water damage hardwood floor cupping",
+    date: "2026-09-01",
+    dek: "Often, if we reach it before cupping sets. Rescue mats exist. Some floors still need a refinish after they dry flat.",
+    body: [
+      "Hardwood cups when the bottom of the board stays wet longer than the top. That is a cavity and subfloor problem as much as a finish problem.",
+      "If extraction is same-night and injected drying or rescue mats go down while the boards can still move back, many floors return. If they have already peaked, they may dry with a gap or a ripple that needs sanding later.",
+      "We do not promise a floor from a phone call. We meter it. The drying log is the record, not a before-and-after photo of a wet shine.",
+      "Engineered floors and solid floors behave differently. Particle-board subfloors are the quieter failure — the hardwood can look brave while the substrate is done.",
+    ],
+  },
+  {
+    slug: "what-a-drying-log-is",
+    title: "What a drying log is, and why you should ask for one",
+    target: "moisture log water damage",
+    date: "2026-09-01",
+    dek: "A log is readings at marked points, every day, until target. If a company cannot show you one, they are guessing.",
+    body: [
+      "A drying log is not a marketing PDF. It is the same points, metered, dated, until they meet the target we wrote down on day zero.",
+      "Ask for it. Adjusters ask for it. Boards should ask for it. It is the one verifiable quality difference in restoration.",
+      "Our equipment cap — five days without written approval — only works if someone actually comes back to read the meters. That is the operational point of publishing the cap.",
+      "If the log is missing, you cannot tell whether the job was done or merely looked dry.",
+    ],
+  },
+  {
+    slug: "mould-after-water-damage",
+    title: "Mould after water damage — the 48-hour window",
+    target: "mould after flood",
+    date: "2026-09-01",
+    dek: "The growth window is 24–48 hours in wet materials. That is why the night crew exists.",
+    body: [
+      "IICRC S500-shaped guidance puts visible mould risk in that window. Climate, material, and temperature move it. The window is still the reason not to wait until Monday. [CLIENT — technician review.]",
+      "Wiping a stain without drying the cavity is how it returns. Containment and negative air exist because spores travel through a building faster than a mop.",
+      "Spelling is mould in Canada and mold in the United States. The fungus does not care. The page language does, because it is how you search.",
+      "If sewage was involved, do not start with mould. Start with Category 3. Then dry. Then talk about what still has to come out.",
+    ],
+  },
+  {
+    slug: "how-water-moves-through-a-building",
+    title: "How water moves through a building",
+    target: "where does water go after a leak",
+    date: "2026-09-01",
+    dek: "It does not stay in the room you can see. Joists, cavities, and bottom plates carry it two rooms over.",
+    body: [
+      "Gravity is obvious. Capillary travel in drywall and subfloors is the part people miss. A ceiling that looks fine can be a pond in the cavity.",
+      "Stacked plumbing in strata is a vertical pipe with horizontal consequences. A third-floor leak is a first-floor morning.",
+      "The droplet-trace diagrams on the service and first-hour pages are the static version of this. Four sources: bath, kitchen, roof, basement. Each has a hidden list.",
+      "This is why 'it is only a little water' is not a measurement. Measurement is a meter at a marked point.",
+    ],
+  },
+  {
+    slug: "questions-to-ask-before-you-hire",
+    title: "What to ask a restoration company before you hire them",
+    target: "questions to ask water damage company",
+    date: "2026-09-01",
+    dek: "Who answers at 3am. Who logs the readings. What is on the invoice that is not on the website.",
+    body: [
+      "Who picks up the phone overnight — a dispatcher who can send a crew, or a call centre that books the morning?",
+      "Will they give you a drying log with marked points and targets?",
+      "Is the rate card public? Fuel surcharge? Contractor fee? Equipment billed until someone remembers to pick it up?",
+      "Are they IICRC certified, and will they print the numbers? WorkSafeBC and the municipal licence in this market?",
+      "Will the same company hang the drywall, or do you get a second set of strangers after the fans leave?",
+      "If they cannot answer those without a brochure, keep calling. Our answers are on the site, including the rates.",
+    ],
+  },
+] as const;
+
+export function getGuide(slug: string) {
+  return guides.find((g) => g.slug === slug);
+}

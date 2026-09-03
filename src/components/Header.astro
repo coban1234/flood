@@ -1,0 +1,42 @@
+---
+import { vancouver } from "../data/site";
+import Brand from "./Brand.astro";
+
+const base = vancouver.path;
+const links = [
+  { href: `${base}/emergency/`, label: "Emergency" },
+  { href: `${base}/first-hour/`, label: "What to do" },
+  { href: `${base}/services/`, label: "Services" },
+  { href: `${base}/pricing/`, label: "Pricing" },
+  { href: `${base}/areas/`, label: "Areas" },
+];
+---
+
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <Brand />
+    <nav class="nav-desk" aria-label="Primary">
+      {links.map((l) => (
+        <a href={l.href}>{l.label}</a>
+      ))}
+    </nav>
+    <details class="menu">
+      <summary aria-label="Open menu">Menu</summary>
+      <nav class="menu__panel" aria-label="Site">
+        <a href={`${base}/emergency/`}>Emergency — call now</a>
+        <a href={`${base}/first-hour/`}>What to do right now</a>
+        <a href={`${base}/services/`}>Services</a>
+        <a href={`${base}/buildings/`}>Buildings & property managers</a>
+        <a href={`${base}/pricing/`}>Pricing</a>
+        <a href={`${base}/insurance/`}>Insurance</a>
+        <a href={`${base}/work/`}>Our work</a>
+        <a href={`${base}/areas/`}>Service areas</a>
+        <a href={`${base}/about/`}>About</a>
+        <a href={`${base}/reviews/`}>Reviews</a>
+        <a href={`${base}/contact/`}>Contact</a>
+        <hr class="menu__split" />
+        <a href="/">Change city</a>
+      </nav>
+    </details>
+  </div>
+</header>

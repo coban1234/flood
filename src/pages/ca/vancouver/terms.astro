@@ -1,0 +1,33 @@
+---
+import MarketLayout from "../../../layouts/MarketLayout.astro";
+import Breadcrumbs from "../../../components/Breadcrumbs.astro";
+import { SITE_ORIGIN, vancouver } from "../../../data/site";
+
+const path = `${vancouver.path}/terms/`;
+---
+
+<MarketLayout
+  title="Terms | Tidemark Restoration Metro Vancouver"
+  description="Terms of use for the Vancouver market site. [CLIENT — counsel review.]"
+  path={path}
+>
+  <main id="main">
+    <div class="wrap">
+      <Breadcrumbs
+        crumbs={[
+          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: "Terms" },
+        ]}
+      />
+    </div>
+    <section class="hero">
+      <div class="wrap prose">
+        <h1 class="display">Terms</h1>
+        <p>
+          Published rates cover mitigation. Rebuild is quoted in writing after dry-out. The site is information, not a
+          contract until a scope is signed. [CLIENT — replace with counsel-approved terms for {vancouver.legalEntity}.]
+        </p>
+      </div>
+    </section>
+  </main>
+</MarketLayout>
