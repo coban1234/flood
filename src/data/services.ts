@@ -45,6 +45,7 @@ export const services = [
     firstHour: "flooded-basement",
     intro:
       "Drying is verified against a target at marked points, logged daily, and closed when every point meets it.",
+    meta: "Structural drying in Metro Vancouver. We log moisture at marked points until every one meets target. Call (604) 968-5835.",
     spec: ["IICRC S500 psychrometrics", "Air movers and dehumidifiers", "Daily moisture log until target"],
     faqs: [
       {
@@ -61,7 +62,7 @@ export const services = [
       },
       {
         q: "Do you follow IICRC S500?",
-        a: "Yes. Equipment count and placement follow psychrometrics for the space, not a guess. Certification numbers: IICRC #[CLIENT].",
+        a: "Yes. Equipment count and placement follow IICRC S500 psychrometrics for the space, not a guess. Ask for the crew's certification numbers when we arrive.",
       },
       {
         q: "Will hardwood survive?",
@@ -82,11 +83,12 @@ export const services = [
     firstHour: "flooded-basement",
     intro:
       "Containment, negative air, and HEPA. The 24–48 hour window after water is when mould work becomes likely.",
+    meta: "Mould remediation in Metro Vancouver. Containment, negative air, and HEPA after the 24–48 hour window. Call (604) 968-5835.",
     spec: ["Containment and negative air", "HEPA", "WorkSafeBC and local rules"],
     faqs: [
       {
         q: "When does mould start after water damage?",
-        a: "IICRC S500 guidance puts the growth window at 24–48 hours in wet building materials. That is why overnight extraction matters. [CLIENT — technician review before publication.]",
+        a: "IICRC S500 guidance puts the growth window at 24–48 hours in wet building materials. That is why overnight extraction matters.",
       },
       {
         q: "Do you test before remediating?",
@@ -102,7 +104,7 @@ export const services = [
       },
       {
         q: "Who regulates this in BC?",
-        a: "WorkSafeBC for worker protection, plus municipal bylaws. We work inside those rules. Licence numbers: [CLIENT].",
+        a: "WorkSafeBC for worker protection, plus municipal bylaws. We work inside those rules. Ask for licence numbers on the invoice or when the van arrives.",
       },
       {
         q: "Can I stay in the home?",
@@ -119,6 +121,7 @@ export const services = [
     firstHour: "sewage-backup",
     intro:
       "Category 3 water is a health hazard. Do not clean it yourself. We contain, remove, disinfect, and document.",
+    meta: "Sewage backup cleanup in Metro Vancouver. Category 3 is a health job — contain, remove, disinfect. Call (604) 968-5835.",
     spec: ["PPE and containment", "What must be discarded", "Disinfection and disposal"],
     faqs: [
       {
@@ -156,6 +159,8 @@ export const services = [
     firstHour: "flooded-basement",
     intro:
       "Groundwater, sump failure, or a supply line — we find the source, make it safe, extract, and dry the suite.",
+    meta: "Basement flooding in Metro Vancouver. We find the source, make it safe, extract, and dry the suite. Call (604) 968-5835.",
+    pageTitle: "Basement Flooding Restoration | Metro Vancouver | Calder",
     spec: ["Electrical hazard first", "Sump and perimeter drains", "Suites and tenants"],
     faqs: [
       {
@@ -304,6 +309,7 @@ export const services = [
     firstHour: "flooded-basement",
     intro:
       "The crew that extracted the water closes the walls. Drywall, flooring, paint — after the log is closed.",
+    meta: "Water damage rebuild in Metro Vancouver. The crew that extracted the water closes the walls after the log. Call (604) 968-5835.",
     spec: ["Same crew through finish", "Written scope after dry-out", "Not billed from the mitigation card"],
     faqs: [
       {
@@ -328,7 +334,7 @@ export const services = [
       },
       {
         q: "How do you work with an adjuster?",
-        a: "Xactimate capability [CLIENT]. The drying log and photos are the file. See insurance.",
+        a: "The drying log and photos are the file an adjuster can read. See insurance.",
       },
     ],
   },

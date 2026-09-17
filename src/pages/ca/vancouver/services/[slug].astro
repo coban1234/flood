@@ -41,8 +41,8 @@ const jsonLd = [
 ---
 
 <MarketLayout
-  title={`${service.keyword} | ${brand.name}`}
-  description={`${service.name} in Metro Vancouver. ${service.intro} Call ${vancouver.phoneDisplay}.`}
+  title={"pageTitle" in service ? service.pageTitle : `${service.keyword} | ${brand.name}`}
+  description={"meta" in service ? service.meta : `${service.name} in Metro Vancouver. ${service.intro} Call ${vancouver.phoneDisplay}.`}
   path={path}
   jsonLd={jsonLd}
 >

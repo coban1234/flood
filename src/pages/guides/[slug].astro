@@ -11,10 +11,12 @@ export function getStaticPaths() {
 const guide = getGuide(Astro.params.slug!);
 if (!guide) throw new Error("Unknown guide");
 const path = `/guides/${guide.slug}/`;
+const fullTitle = `${guide.title} | ${brand.name}`;
+const title = fullTitle.length > 60 ? guide.title : fullTitle;
 ---
 
 <MarketLayout
-  title={`${guide.title} | ${brand.name}`}
+  title={title}
   description={guide.dek}
   path={path}
   jsonLd={[

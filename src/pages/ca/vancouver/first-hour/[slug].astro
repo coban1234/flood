@@ -32,7 +32,7 @@ const howTo = {
 
 <MarketLayout
   title={`${page.title}: What To Do First | Metro Vancouver | ${brand.shortName}`}
-  description={`${page.steps.map((s) => s.text).join(" ")} Call ${vancouver.phoneDisplay}.`}
+  description={page.meta}
   path={path}
   jsonLd={[howTo]}
 >

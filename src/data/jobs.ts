@@ -16,10 +16,11 @@ export const jobs = [
     dryBy: "Day 4",
     summary:
       "A potable line failed in an upstairs bath. Water followed the joists into the living room below. Extraction the same night. Log closed on day 4 when every marked point met target.",
+    meta: "Kitsilano supply-line loss: same-night extraction, cavities two rooms over, log closed on day 4. Call (604) 968-5835.",
     narrative: [
       "The loss was a supply line, not groundwater. Category 1 on arrival. We shut the valve, extracted standing water, and opened a small inspection hole in the ceiling below — the cavity was wet two rooms from the bath.",
       "Equipment: six air movers and two dehumidifiers. Readings logged daily at marked points. Surfaces looked dry on day 2. Cavities were not. Equipment stayed.",
-      "Rebuild of the opened ceiling and paint was a written scope after the log closed. Neighbourhood only. Written permission [CLIENT].",
+      "Rebuild of the opened ceiling and paint was a written scope after the log closed. Neighbourhood only. Photographs are published with permission.",
     ],
     readings: [
       { day: 0, value: "24.1%", note: "Extraction complete, first readings logged" },
@@ -74,6 +75,7 @@ export const jobs = [
     dryBy: "Day 5",
     summary:
       "A failed sump put groundwater across a Richmond slab overnight. After-hours extraction so the space could trade. Rebuild of damaged millwork quoted after the log.",
+    meta: "Richmond slab seepage: overnight extraction after a failed sump so the shop could trade. Call (604) 968-5835.",
     narrative: [
       "Downtime was the cost. We worked the night. Water category was not a clean supply line. Selective contents came out. Stock that could be saved went to climate storage.",
       "Slab-on-grade drying is slower than a framed basement. We said so on hour one. Equipment cap still five days unless they approved an extension.",

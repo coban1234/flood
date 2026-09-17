@@ -74,7 +74,7 @@ export const guides = [
     date: "2026-09-01",
     dek: "The growth window is 24–48 hours in wet materials. That is why the night crew exists.",
     body: [
-      "IICRC S500-shaped guidance puts visible mould risk in that window. Climate, material, and temperature move it. The window is still the reason not to wait until Monday. [CLIENT — technician review.]",
+      "IICRC S500-shaped guidance puts visible mould risk in that window. Climate, material, and temperature move it. The window is still the reason not to wait until Monday.",
       "Wiping a stain without drying the cavity is how it returns. Containment and negative air exist because spores travel through a building faster than a mop.",
       "Spelling is mould in Canada and mold in the United States. The fungus does not care. The page language does, because it is how you search.",
       "If sewage was involved, do not start with mould. Start with Category 3. Then dry. Then talk about what still has to come out.",

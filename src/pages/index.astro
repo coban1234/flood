@@ -8,6 +8,25 @@ import { SITE_ORIGIN, brand, vancouver, newYork } from "../data/site";
   description="24/7 water damage restoration. Choose Metro Vancouver or New York."
   canonical={`${SITE_ORIGIN}/`}
   lang="en"
+  alternates={[
+    { lang: "en-CA", href: `${SITE_ORIGIN}${vancouver.path}/` },
+    { lang: "en-US", href: `${SITE_ORIGIN}${newYork.path}/` },
+    { lang: "x-default", href: `${SITE_ORIGIN}/` },
+  ]}
+  jsonLd={[
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: brand.name,
+      url: `${SITE_ORIGIN}/`,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: brand.name,
+      url: `${SITE_ORIGIN}/`,
+    },
+  ]}
 >
   <main id="main" style="min-height:100svh;display:grid;place-items:center;padding:2rem">
     <div style="width:min(28rem,100%)">

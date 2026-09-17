@@ -18,7 +18,7 @@ const path = `${vancouver.path}/work/${job.slug}/`;
 
 <MarketLayout
   title={`${job.title} | Metro Vancouver | ${brand.shortName}`}
-  description={job.summary}
+  description={"meta" in job ? job.meta : job.summary}
   path={path}
   jsonLd={[
     {

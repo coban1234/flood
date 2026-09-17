@@ -18,6 +18,7 @@ export const firstHourPages = [
     arrival: "We stop the source if it is still open, extract, and start the drying log.",
     claim:
       "A potable burst often starts as Category 1. Whether to claim is your call — deductible vs published rates. See without a claim.",
+    meta: "Burst pipe: shut the main, kill power to the wet area, photograph before you move anything. Call (604) 968-5835.",
   },
   {
     slug: "flooded-basement",
@@ -37,6 +38,7 @@ export const firstHourPages = [
     ],
     arrival: "We make it safe, find the source, extract, and dry the suite and cavities.",
     claim: "Sump and groundwater may or may not be covered. We document. The insurer decides.",
+    meta: "Flooded basement: stay out of standing water, kill power from a dry place, photograph from dry ground. Call (604) 968-5835.",
   },
   {
     slug: "ceiling-leak",
@@ -56,6 +58,7 @@ export const firstHourPages = [
     ],
     arrival: "We find the source path, extract the cavity, and dry before mould takes the 24–48 hour window.",
     claim: "Stack leaks in strata are a who-pays question. See buildings. This page is not legal advice.",
+    meta: "Ceiling leak: contain the drip, tell the unit above and the board, photograph first. Call (604) 968-5835.",
   },
   {
     slug: "sewage-backup",
@@ -75,6 +78,7 @@ export const firstHourPages = [
     ],
     arrival: "PPE, containment, removal, disinfection. We will show you what must be discarded.",
     claim: "Backup coverage in BC often needs an endorsement. We still come. See insurance.",
+    meta: "Sewage backup is Category 3. Leave the area, keep people and pets out, photograph from dry ground. Call (604) 968-5835.",
   },
   {
     slug: "appliance-flood",
@@ -94,6 +98,7 @@ export const firstHourPages = [
     ],
     arrival: "We pull kick plates, check the subfloor, extract, and dry cabinets from the inside if they can be saved.",
     claim: "Many appliance losses sit near a deductible. Published rates exist so you can choose.",
+    meta: "Appliance flood: shut the valve, kill power to wet cabinets, photograph. Check the subfloor. Call (604) 968-5835.",
   },
 ] as const;
 
