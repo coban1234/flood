@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#121417"/>
+  <rect x="0" y="0" width="8" height="630" fill="#E23A12"/>
+  <g transform="translate(80,200)">
+    <rect width="88" height="88" rx="18" fill="#1c2128"/>
+    <path d="M18 50c7.5-10 15-15 26-15s18.5 5 26 15" stroke="#F4F1EA" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+    <path d="M18 62c7.5-7.5 15-11.2 26-11.2s18.5 3.7 26 11.2" stroke="#E23A12" stroke-width="5.5" fill="none" stroke-linecap="round"/>
+  </g>
+  <text x="80" y="360" font-family="Georgia, Times New Roman, serif" font-size="68" font-weight="700" fill="#F4F1EA">Calder Restoration</text>
+  <text x="80" y="424" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="30" fill="#E23A12">24/7 water damage response</text>
+  <text x="80" y="540" font-family="Helvetica Neue, Helvetica, Arial, sans-serif" font-size="22" letter-spacing="0.08em" fill="#8a8f96">calderrestoration.com</text>
+</svg>

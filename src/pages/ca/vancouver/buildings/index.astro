@@ -2,7 +2,7 @@
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import DropletTrace from "../../../../components/DropletTrace.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 
 const path = `${vancouver.path}/buildings/`;
 const pages = [
@@ -13,7 +13,7 @@ const pages = [
 ---
 
 <MarketLayout
-  title="Strata Water Damage Metro Vancouver | Tidemark Restoration"
+  title={`Strata Water Damage Metro Vancouver | ${brand.name}`}
   description="Stack leaks, multi-unit response, and who pays in BC strata. Dedicated path for boards and property managers."
   path={path}
 >
@@ -21,7 +21,7 @@ const pages = [
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Buildings" },
         ]}

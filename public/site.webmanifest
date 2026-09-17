@@ -1,0 +1,22 @@
+{
+  "name": "Calder Restoration",
+  "short_name": "Calder",
+  "description": "24/7 water damage restoration in Metro Vancouver",
+  "start_url": "/ca/vancouver/",
+  "display": "standalone",
+  "background_color": "#121417",
+  "theme_color": "#E23A12",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    },
+    {
+      "src": "/logo-dark.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

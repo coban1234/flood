@@ -1,22 +1,22 @@
 ---
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 import { firstHourPages } from "../../../data/firstHour";
 
 const path = `${vancouver.path}/tell/`;
 ---
 
 <MarketLayout
-  title="Tell us what happened | Metro Vancouver | Tidemark"
-  description="Four taps. Situation-specific instructions while you wait. Call (604) 555-0199."
+  title={`Tell us what happened | Metro Vancouver | ${brand.shortName}`}
+  description={`Four taps. Situation-specific instructions while you wait. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Tell us what happened" },
         ]}

@@ -1,14 +1,16 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { launchJobs } from "../../../../data/jobs";
+import { jobPhotos } from "../../../../data/jobPhotos";
+import { Image } from "astro:assets";
 
 const path = `${vancouver.path}/work/`;
 ---
 
 <MarketLayout
-  title="Documented Water Damage Jobs Metro Vancouver | Tidemark"
+  title={`Documented Water Damage Jobs Metro Vancouver | ${brand.shortName}`}
   description="Three documented losses at launch: residential, multi-unit, and commercial. Readings, not mood lighting."
   path={path}
 >
@@ -16,7 +18,7 @@ const path = `${vancouver.path}/work/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Work" },
         ]}
@@ -30,7 +32,15 @@ const path = `${vancouver.path}/work/`;
           {
             launchJobs.map((j) => (
               <a class="tile" href={`${path}${j.slug}/`}>
-                <div class="tile__photo"></div>
+                <div class="tile__photo">
+                  <Image
+                    src={jobPhotos[j.slug].src}
+                    alt={jobPhotos[j.slug].alt}
+                    widths={[320, 640]}
+                    sizes="(min-width: 1024px) 21rem, (min-width: 480px) 50vw, 100vw"
+                    loading="lazy"
+                  />
+                </div>
                 <div class="tile__label">{j.title}</div>
               </a>
             ))

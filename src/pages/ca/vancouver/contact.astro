@@ -2,13 +2,13 @@
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import Coverage from "../../../components/Coverage.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 
 const path = `${vancouver.path}/contact/`;
 ---
 
 <MarketLayout
-  title="Contact Tidemark Restoration Metro Vancouver"
+  title={`Contact ${brand.name} Metro Vancouver`}
   description={`24/7 emergency line ${vancouver.phoneDisplay}. Buildings, insurance, and general.`}
   path={path}
 >
@@ -16,7 +16,7 @@ const path = `${vancouver.path}/contact/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Contact" },
         ]}
       />
@@ -42,7 +42,10 @@ const path = `${vancouver.path}/contact/`;
           </article>
           <article class="panel">
             <h2>General</h2>
-            <p>[CLIENT — office phone and hours] · {vancouver.addressLine}</p>
+            <p>
+              <a href={`tel:${vancouver.phoneTel}`}>{vancouver.phoneDisplay}</a> · 24/7
+            </p>
+            <p>{vancouver.addressLine}</p>
           </article>
         </div>
       </div>

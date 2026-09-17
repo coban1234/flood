@@ -1,14 +1,14 @@
 ---
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 import { reviews } from "../../../data/content";
 
 const path = `${vancouver.path}/reviews/`;
 ---
 
 <MarketLayout
-  title="Tidemark Restoration Reviews Metro Vancouver"
+  title={`${brand.name} Reviews Metro Vancouver`}
   description="Reviews for the Vancouver market only. They do not transfer to New York."
   path={path}
 >
@@ -16,7 +16,7 @@ const path = `${vancouver.path}/reviews/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Reviews" },
         ]}
       />

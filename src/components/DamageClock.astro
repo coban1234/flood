@@ -6,7 +6,13 @@ import { clockBands } from "../data/mechanics";
   <div class="wrap">
     <p class="eyebrow">How long has it been wet?</p>
     <h2 id="clock-h" class="display">The damage clock</h2>
-    <p class="lede">Facts from the hour the water sat — not a countdown. [CLIENT — IICRC S500 technician review.]</p>
+    {/* Claims below are IICRC S500-shaped and still need technician sign-off before launch. */}
+    <p class="lede">
+      These bands are what water does to a building as the hours pass, shaped by IICRC S500 guidance
+      and the jobs we run. Not a countdown — the hour a given material turns depends on how much
+      water there was, how warm the room is, and what the water was carrying. Use it to work out
+      which job you have, then call whichever band you are in.
+    </p>
     <div class="clock">
       {
         clockBands.map((b) => (

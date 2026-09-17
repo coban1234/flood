@@ -1,13 +1,13 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 
 const path = `${vancouver.path}/buildings/who-pays/`;
 ---
 
 <MarketLayout
-  title="Who Pays for Strata Water Damage in BC | Tidemark"
+  title={`Who Pays for Strata Water Damage in BC | ${brand.shortName}`}
   description="Strata corporation vs owner, deductibles, and chargebacks. General guidance, not legal advice."
   path={path}
 >
@@ -15,7 +15,7 @@ const path = `${vancouver.path}/buildings/who-pays/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Buildings", href: `${SITE_ORIGIN}${vancouver.path}/buildings/` },
           { name: "Who pays" },
         ]}

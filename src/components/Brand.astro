@@ -1,15 +1,13 @@
 ---
+import { brand, vancouver } from "../data/site";
+
 interface Props {
   href?: string;
 }
-const href = Astro.props.href ?? "/ca/vancouver/";
+const href = Astro.props.href ?? `${vancouver.path}/`;
 ---
 
-<a class="brand" href={href} aria-label="Tidemark Restoration home">
-  <svg width="28" height="28" viewBox="0 0 28 28" fill="none" aria-hidden="true">
-    <rect width="28" height="28" rx="6" fill="#121417"></rect>
-    <path d="M6 16c2.4-3.2 4.8-4.8 8-4.8s5.6 1.6 8 4.8" stroke="#F4F1EA" stroke-width="1.8" stroke-linecap="round"></path>
-    <path d="M6 20c2.4-2.4 4.8-3.6 8-3.6s5.6 1.2 8 3.6" stroke="#E23A12" stroke-width="1.8" stroke-linecap="round"></path>
-  </svg>
-  <span>Tidemark</span>
+<a class="brand" href={href} aria-label={`${brand.name} home`}>
+  <img src="/logo-dark.svg" width="28" height="28" alt="" />
+  <span>{brand.shortName}</span>
 </a>

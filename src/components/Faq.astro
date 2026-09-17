@@ -28,6 +28,7 @@ const jsonLd = {
         ))
       }
     </div>
+    <slot />
   </div>
 </section>
 <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

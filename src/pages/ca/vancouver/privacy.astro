@@ -1,33 +1,137 @@
 ---
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 
 const path = `${vancouver.path}/privacy/`;
 ---
 
 <MarketLayout
-  title="Privacy | Tidemark Restoration Metro Vancouver"
-  description="PIPEDA-oriented privacy notice for the Vancouver market. [CLIENT — counsel review.]"
+  title={`Privacy | ${brand.name} Metro Vancouver`}
+  description={`How ${brand.name} collects and uses personal information on a water damage job in Metro Vancouver. PIPEDA and CASL. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Privacy" },
         ]}
       />
     </div>
     <section class="hero">
       <div class="wrap prose">
+        <p class="eyebrow">Canada · PIPEDA</p>
         <h1 class="display">Privacy</h1>
-        <p>
-          We collect what a dispatch ticket needs: what happened, where, and how to reach you. Photographs of a
-          customer's property require separate written permission. CASL: marketing consent is unchecked by default.
+        <p class="lede">
+          This notice covers personal information we collect in Metro Vancouver — on the phone, on a job, and on this
+          site. Last updated September 2026.
         </p>
-        <p>PIPEDA applies in Canada. This page is jurisdiction-specific. [CLIENT — replace with counsel-approved text.]</p>
+        <p>
+          {brand.name} operates from {vancouver.addressLine}. To reach us about privacy: call {vancouver.phoneDisplay}.
+          The Personal Information Protection and Electronic Documents Act (PIPEDA) applies to how we handle personal
+          information in the course of commercial activity. This page is for Canada. It is not the New York notice.
+        </p>
+
+        <h2 class="display">What we collect</h2>
+        <p>
+          A dispatch ticket needs what happened, the address, and how to reach you. That is usually a name, phone
+          number, property address, unit or strata details if they matter, and a short description of the loss. If
+          someone else called — a property manager, a neighbour, an insurer — we also record who that was.
+        </p>
+        <p>
+          On site we collect what the job requires: photographs of the damage, moisture readings, a drying log, an
+          inventory of packed-out contents, and notes on access, hazards, and who authorised the work. If you pay us
+          directly we collect what the payment needs (Interac e-Transfer, card, or cheque). If an insurer, strata, or
+          adjuster is on the file, we collect claim or file numbers they give us.
+        </p>
+        <p>
+          This website does not run an account, a chat, or a form that stores your name. “Tell us what happened” is four
+          taps that send you to first-hour instructions, then the phone. We do not currently run advertising pixels or
+          a marketing mailing list on these pages. The site still logs ordinary web-server data (the page requested,
+          time, and a truncated address) so the pages stay up.
+        </p>
+
+        <h2 class="display">Why we use it</h2>
+        <p>
+          We use personal information to dispatch a crew, do the work, keep the drying log, invoice you, bill an
+          insurer when you have asked us to, and defend a file if there is a dispute. That is the purpose. We do not
+          sell lists. We do not buy lists. We do not use a loss address to market unrelated services.
+        </p>
+        <p>
+          Photographs of your property that identify the house or the people in it are part of the job file. Publishing
+          those photographs on this site, in ads, or in a case study takes separate written permission. Illustrative
+          images already on the site are not your job.
+        </p>
+
+        <h2 class="display">Who we share it with</h2>
+        <p>
+          We share what a job requires with people already on that job: the crew, an adjuster or insurer you have
+          directed us to, a strata council or property manager who authorised access, and a plumber or other trade we
+          bring in with your knowledge. Payment processors see what they need to complete a transfer or a card payment.
+        </p>
+        <p>
+          We may disclose information if the law requires it, or if we must protect someone from a serious and imminent
+          threat. We do not hand a drying log to a neighbour who asks.
+        </p>
+
+        <h2 class="display">CASL — commercial electronic messages</h2>
+        <p>
+          Canada's Anti-Spam Legislation applies if we email or text you to market, not to run the job. Consent for
+          marketing is off by default. A dispatch call, an invoice, a drying-log update, or a “we are 20 minutes out”
+          message is not a marketing blast. If we ever send a newsletter or a promotion, it will say who we are, how to
+          unsubscribe, and it will not go out unless you have consented or another CASL exception clearly applies.
+        </p>
+
+        <h2 class="display">How long we keep it</h2>
+        <p>
+          Job files — photos, readings, invoices, scopes — are kept for as long as we need them to close the work, meet
+          tax and insurance requirements, and answer a later dispute. That is typically years, not weeks. When a file
+          is no longer needed we destroy or de-identify it. Web-server logs are rotated on a short cycle.
+        </p>
+
+        <h2 class="display">Security</h2>
+        <p>
+          Files sit with the people on the job and in the office systems we use to invoice and log moisture. Phones and
+          cameras on site are working tools, not a public gallery. No office is perfectly sealed. If we become aware of
+          a breach that creates a real risk of significant harm, we will notify you and the Office of the Privacy
+          Commissioner of Canada as PIPEDA requires.
+        </p>
+
+        <h2 class="display">Your access</h2>
+        <p>
+          You can ask what personal information we hold about you, ask us to correct it, and ask how we have used it.
+          Call {vancouver.phoneDisplay} or write to {vancouver.addressLine}. We will respond within the time PIPEDA
+          allows. We may refuse in the narrow cases the Act permits — for example if the request would reveal someone
+          else's information — and we will say so.
+        </p>
+        <p>
+          If you are not satisfied, you can complain to the Office of the Privacy Commissioner of Canada
+          (priv.gc.ca).
+        </p>
+
+        <h2 class="display">Children</h2>
+        <p>
+          This site is not aimed at children. A dispatch ticket may mention that children live in the home so the crew
+          knows who is on site. We do not market to minors.
+        </p>
+
+        <h2 class="display">Changes</h2>
+        <p>
+          We may update this page. The date at the top is the current version. If we change how we use information in a
+          way that is not compatible with the original purpose, we will tell you.
+        </p>
+
+        <h2 class="display">Contact</h2>
+        <p>
+          Privacy questions: {vancouver.phoneDisplay} · {vancouver.addressLine}.
+        </p>
+        <p>
+          <a href={`${vancouver.path}/terms/`}>Terms of service</a>
+          ·
+          <a href={`${vancouver.path}/contact/`}>Contact</a>
+        </p>
       </div>
     </section>
   </main>

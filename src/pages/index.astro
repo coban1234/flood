@@ -1,17 +1,17 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SITE_ORIGIN, vancouver, newYork } from "../data/site";
+import { SITE_ORIGIN, brand, vancouver, newYork } from "../data/site";
 ---
 
 <Base
-  title="Tidemark Restoration — 24/7 water damage response"
+  title={`${brand.name} — 24/7 water damage response`}
   description="24/7 water damage restoration. Choose Metro Vancouver or New York."
   canonical={`${SITE_ORIGIN}/`}
   lang="en"
 >
   <main id="main" style="min-height:100svh;display:grid;place-items:center;padding:2rem">
     <div style="width:min(28rem,100%)">
-      <p class="eyebrow">Tidemark Restoration</p>
+      <p class="eyebrow">{brand.name}</p>
       <h1 class="display">24/7 water damage response</h1>
       <p class="lede">Looks like you're near Vancouver. Choose a market — we will not force a redirect.</p>
       <div class="stack">

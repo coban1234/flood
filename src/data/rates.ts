@@ -83,7 +83,8 @@ export const billingTerms = [
   "Equipment billed to target, capped at five days without written approval.",
   "Rebuild quoted in writing after dry-out, not from this card.",
   "Insurance work billed on the insurer's programme rates, not this card.",
-  "Payment terms and accepted methods [CLIENT per market].",
+  "Emergency work is due on completion. Insurer-billed files are net 30 from the closing invoice.",
+  "Interac e-Transfer, Visa, Mastercard, and cheque. No deposit taken on an emergency call-out.",
 ];
 
 export const homeRatePreview: RateRow[] = [

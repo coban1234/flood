@@ -4,17 +4,22 @@ import PhotoSlot from "../../../components/PhotoSlot.astro";
 import DamageClock from "../../../components/DamageClock.astro";
 import DryLog from "../../../components/DryLog.astro";
 import Coverage from "../../../components/Coverage.astro";
-import { vancouver } from "../../../data/site";
+import { brand, vancouver } from "../../../data/site";
 import { services } from "../../../data/services";
 import { launchJobs } from "../../../data/jobs";
 import { reviews, processSteps } from "../../../data/content";
 import { homeRatePreview } from "../../../data/rates";
+import heroPhoto from "../../../assets/photos/hero-extraction-night.png";
+import figure03 from "../../../assets/photos/fig03-crew-wide-night.png";
+import { servicePhotos } from "../../../data/servicePhotos";
+import { jobPhotos } from "../../../data/jobPhotos";
+import { Image } from "astro:assets";
 
 const path = `${vancouver.path}/`;
 ---
 
 <MarketLayout
-  title="24/7 Water Damage Restoration Metro Vancouver | Tidemark"
+  title={`24/7 Water Damage Restoration Metro Vancouver | ${brand.shortName}`}
   description={`Live answer 24/7 across Metro Vancouver. Extraction, structural drying to a documented target, and rebuild. Rates published. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
@@ -23,7 +28,14 @@ const path = `${vancouver.path}/`;
       <div class="wrap hero-grid">
         <div>
           <p class="eyebrow">Metro Vancouver · 24/7</p>
-          <h1 class="display">We're awake.</h1>
+          <h1 class="display">
+            We're awake.
+            <span class="hero-h1__sub">Water damage restoration in Metro Vancouver</span>
+          </h1>
+          <p class="lede hero-detail">
+            Burst pipe, flooded basement, sewage backup — a person answers the phone, a crew is on
+            the road, and we extract, dry to a documented target, and rebuild.
+          </p>
           <div class="actions">
             <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">{vancouver.phoneDisplay}</a>
           </div>
@@ -31,12 +43,20 @@ const path = `${vancouver.path}/`;
             <a href={`${vancouver.path}/tell/`}>or tell us what happened →</a>
           </p>
           <p class="status"><span class="dot"></span>2 crews on call · Metro Vancouver</p>
+          <ul class="hero-proof hero-detail">
+            <li><strong>60 min</strong> worst-case response, Tier 1 areas</li>
+            <li><strong>$400</strong> call-out — rates published, no fuel surcharge</li>
+            <li><strong>Day 5</strong> equipment cap, drying log closed at target</li>
+          </ul>
         </div>
         <div>
           <PhotoSlot
             ratio="4/5"
+            src={heroPhoto}
+            priority
+            sizes="(min-width: 64rem) 30rem, 100vw"
             caption="FIG. 01 — 01:40 · BURNABY"
-            label="Photograph to be shot: night, crew extracting, work light, water on the floor. Bottom third dark. Shot locally."
+            label="Technician extracting standing water from a flooded Burnaby basement at night, lit by a single work light."
           />
         </div>
       </div>
@@ -49,7 +69,15 @@ const path = `${vancouver.path}/`;
           {
             services.map((s) => (
               <a class="tile" href={`${vancouver.path}/services/${s.slug}/`}>
-                <div class="tile__photo" role="img" aria-label={`${s.name} — local job photograph to be shot`}></div>
+                <div class="tile__photo">
+                  <Image
+                    src={servicePhotos[s.slug].src}
+                    alt={servicePhotos[s.slug].alt}
+                    widths={[320, 640]}
+                    sizes="(min-width: 1024px) 21rem, (min-width: 480px) 50vw, 100vw"
+                    loading="lazy"
+                  />
+                </div>
                 <div class="tile__label">{s.tile}</div>
               </a>
             ))
@@ -64,8 +92,11 @@ const path = `${vancouver.path}/`;
       <div class="wrap">
         <PhotoSlot
           ratio="16/9"
+          src={figure03}
+          widths={[640, 1024, 1280]}
+          sizes="(min-width: 78rem) 76rem, 100vw"
           caption="FIG. 03 — 02:15 · BURNABY"
-          label="Full-bleed crew at work, wide, real site. Caption only."
+          label="Two technicians on a Burnaby ground floor at 2am — one extracting water from soaked vinyl plank, the other placing an air mover, with baseboards already pulled off the wall."
         />
       </div>
     </section>
@@ -121,7 +152,15 @@ const path = `${vancouver.path}/`;
           {
             launchJobs.map((j) => (
               <a class="tile" href={`${vancouver.path}/work/${j.slug}/`}>
-                <div class="tile__photo"></div>
+                <div class="tile__photo">
+                  <Image
+                    src={jobPhotos[j.slug].src}
+                    alt={jobPhotos[j.slug].alt}
+                    widths={[320, 640]}
+                    sizes="(min-width: 1024px) 21rem, (min-width: 480px) 50vw, 100vw"
+                    loading="lazy"
+                  />
+                </div>
                 <div class="tile__label">{j.title}</div>
               </a>
             ))

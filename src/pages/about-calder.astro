@@ -1,12 +1,12 @@
 ---
 import MarketLayout from "../layouts/MarketLayout.astro";
-import { vancouver } from "../data/site";
+import { brand, vancouver } from "../data/site";
 
-const path = "/about-tidemark/";
+const path = "/about-calder/";
 ---
 
 <MarketLayout
-  title="About Tidemark Restoration"
+  title={`About ${brand.name}`}
   description="The company across markets. Shared brand, separate local proof."
   path={path}
 >
@@ -14,10 +14,10 @@ const path = "/about-tidemark/";
     <section class="hero">
       <div class="wrap prose">
         <p class="eyebrow">Company</p>
-        <h1 class="display">About Tidemark</h1>
+        <h1 class="display">About {brand.shortName}</h1>
         <p>
-          A tidemark is the line water leaves behind. The company removes it — emergency mitigation through finished
-          rebuild, with one crew. The brand is shared. Licences, phones, reviews, and legal entities are not.
+          {brand.name} is emergency mitigation through finished rebuild, with one crew. The brand is shared. Licences,
+          phones, reviews, and legal entities are not.
         </p>
         <p>
           We answer the phone, we arrive fast, and we prove the building is dry before we close the walls. Rates are

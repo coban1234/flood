@@ -1,21 +1,21 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 
 const path = `${vancouver.path}/insurance/`;
 ---
 
 <MarketLayout
-  title="Water Damage Insurance Claims Metro Vancouver | Tidemark"
-  description="What we document, how the file is assembled, adjuster coordination, and deductibles in BC. Call (604) 555-0199."
+  title={`Water Damage Insurance Claims Metro Vancouver | ${brand.shortName}`}
+  description={`How ${brand.shortName} handles a water damage insurance claim in Metro Vancouver: photos, moisture readings, a drying log the adjuster can read, and a written rebuild scope. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Insurance" },
         ]}
@@ -24,21 +24,24 @@ const path = `${vancouver.path}/insurance/`;
     <section class="hero">
       <div class="wrap prose">
         <p class="eyebrow">British Columbia</p>
-        <h1 class="display">Insurance</h1>
+        <h1 class="display">Water damage insurance claims in Metro Vancouver</h1>
         <p>
-          We photograph, meter, and log. The file is what an adjuster can read: source, category, affected materials,
-          daily readings, and a written rebuild scope after the log closes. Xactimate capability [CLIENT].
+          If you are claiming water damage through home insurance, we build the file an adjuster can actually use.
+          Photographs of the loss, moisture readings, the water category, which materials got wet, a daily drying log,
+          and a written rebuild scope once the building is dry. We send the same package to you and to the insurer —
+          not a verbal recap after the fans come out.
         </p>
         <p>
-          Deductibles, depreciation, and whether sewage backup is endorsed are policy questions. We do not bind
-          coverage. Typical residential water damage in BC may cover sudden and accidental discharge and may exclude
-          gradual seepage, groundwater, and some backups — read your wording. [CLIENT — counsel review.]
+          We restore the building. We do not decide what the policy pays. Your deductible, depreciation, and whether
+          sewage backup is on your wording are questions for your broker or the insurer. Many BC home policies cover a
+          sudden burst pipe or supply-line failure, and exclude slow seepage, groundwater, and some backups. Read the
+          policy. We will still extract and dry either way.
         </p>
         <p>
-          Insurance work is billed on the insurer's programme rates, not the public card. Out-of-pocket work uses the
-          published card.
+          Work billed to an insurer follows that insurer's programme rates. If you pay yourself, you get the published
+          rate card — the same numbers on the pricing page. No second price after the fact.
         </p>
-        <p><a href={`${vancouver.path}/insurance/without-a-claim/`}>Without a claim →</a></p>
+        <p><a href={`${vancouver.path}/insurance/without-a-claim/`}>Paying without a claim →</a></p>
       </div>
     </section>
   </main>

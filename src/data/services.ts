@@ -24,7 +24,7 @@ export const services = [
       },
       {
         q: "How soon can you arrive in Metro Vancouver?",
-        a: "Tier 1 municipalities are a 60-minute worst-case target. Call (604) 555-0199. A person answers and dispatches.",
+        a: "Tier 1 municipalities are a 60-minute worst-case target. Call (604) 968-5835. A person answers and dispatches.",
       },
       {
         q: "Is extraction billed separately from drying?",
@@ -127,7 +127,7 @@ export const services = [
       },
       {
         q: "Should I start cleaning before you arrive?",
-        a: "No. Keep people and pets out. Photograph from a dry area. Do not use a household vacuum. Call (604) 555-0199.",
+        a: "No. Keep people and pets out. Photograph from a dry area. Do not use a household vacuum. Call (604) 968-5835.",
       },
       {
         q: "What has to be thrown away?",
@@ -254,7 +254,7 @@ export const services = [
       },
       {
         q: "Should I wait until morning?",
-        a: "Water does not. The damage clock is the reason. Call (604) 555-0199.",
+        a: "Water does not. The damage clock is the reason. Call (604) 968-5835.",
       },
     ],
   },

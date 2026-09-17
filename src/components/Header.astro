@@ -4,7 +4,7 @@ import Brand from "./Brand.astro";
 
 const base = vancouver.path;
 const links = [
-  { href: `${base}/emergency/`, label: "Emergency" },
+  { href: `${base}/emergency/`, label: "Emergency", signal: true },
   { href: `${base}/first-hour/`, label: "What to do" },
   { href: `${base}/services/`, label: "Services" },
   { href: `${base}/pricing/`, label: "Pricing" },
@@ -17,13 +17,13 @@ const links = [
     <Brand />
     <nav class="nav-desk" aria-label="Primary">
       {links.map((l) => (
-        <a href={l.href}>{l.label}</a>
+        <a href={l.href} class={l.signal ? "nav-signal" : undefined}>{l.label}</a>
       ))}
     </nav>
     <details class="menu">
       <summary aria-label="Open menu">Menu</summary>
       <nav class="menu__panel" aria-label="Site">
-        <a href={`${base}/emergency/`}>Emergency — call now</a>
+        <a href={`${base}/emergency/`} class="nav-signal">Emergency — call now</a>
         <a href={`${base}/first-hour/`}>What to do right now</a>
         <a href={`${base}/services/`}>Services</a>
         <a href={`${base}/buildings/`}>Buildings & property managers</a>

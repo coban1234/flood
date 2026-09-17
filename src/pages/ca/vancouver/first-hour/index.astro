@@ -1,14 +1,14 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { firstHourPages } from "../../../../data/firstHour";
 
 const path = `${vancouver.path}/first-hour/`;
 ---
 
 <MarketLayout
-  title="What To Do First | Metro Vancouver | Tidemark"
+  title={`What To Do First | Metro Vancouver | ${brand.shortName}`}
   description="First-hour instructions for burst pipes, flooded basements, ceiling leaks, sewage, and appliance floods in Metro Vancouver."
   path={path}
 >
@@ -16,7 +16,7 @@ const path = `${vancouver.path}/first-hour/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "First hour" },
         ]}
@@ -27,7 +27,7 @@ const path = `${vancouver.path}/first-hour/`;
         <p class="eyebrow">Read under stress</p>
         <h1 class="display">What to do first</h1>
         <p class="lede">Three instructions. Then the phone. These pages are useful even if you never call.</p>
-        <div class="tiles">
+        <div class="tiles tiles--five">
           {
             firstHourPages.map((p) => (
               <a class="tile" href={`${path}${p.slug}/`}>

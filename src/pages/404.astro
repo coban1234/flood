@@ -1,9 +1,9 @@
 ---
 import Base from "../layouts/Base.astro";
-import { SITE_ORIGIN, vancouver } from "../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../data/site";
 ---
 
-<Base title="Page not found | Tidemark" description="That page is not on this site." canonical={`${SITE_ORIGIN}/404/`} noindex={true}>
+<Base title={`Page not found | ${brand.shortName}`} description="That page is not on this site." canonical={`${SITE_ORIGIN}/404/`} noindex={true}>
   <main id="main" style="min-height:70svh;display:grid;place-items:center;padding:2rem">
     <div>
       <p class="eyebrow">404</p>

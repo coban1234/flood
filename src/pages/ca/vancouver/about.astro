@@ -2,21 +2,26 @@
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import PhotoSlot from "../../../components/PhotoSlot.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
+import crewPhoto from "../../../assets/photos/about/crew.png";
+import portraitPhoto from "../../../assets/photos/about/portrait.png";
+import equipmentPhoto from "../../../assets/photos/about/equipment.png";
 
 const path = `${vancouver.path}/about/`;
+
+const tileSizes = "(min-width: 1024px) 21rem, (min-width: 480px) 50vw, 100vw";
 ---
 
 <MarketLayout
-  title="About Tidemark Restoration Metro Vancouver"
-  description="Who picks up at 3am in Metro Vancouver. IICRC numbers, licences, equipment, crew."
+  title={`About ${brand.name} Metro Vancouver`}
+  description={`24/7 water damage restoration in Metro Vancouver. A person answers the phone, a crew is on the road, and we dry to a documented target before we close the walls. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "About" },
         ]}
       />
@@ -24,24 +29,55 @@ const path = `${vancouver.path}/about/`;
     <section class="hero">
       <div class="wrap prose">
         <p class="eyebrow">Metro Vancouver</p>
-        <h1 class="display">About</h1>
+        <h1 class="display">About {brand.name}</h1>
         <p>
-          We answer the phone, we arrive fast, and we prove the building is dry before we close the walls. 24/7 water
-          damage restoration — with our rates published, not quoted after the fact.
+          We are a 24/7 water damage restoration crew in Metro Vancouver. Burst pipe, flooded basement, sewage backup,
+          or a storm through a window well — a person answers the phone, a van leaves, and we extract, dry to a
+          documented target, and rebuild.
         </p>
         <p>
-          Who picks up at 3am: a person who can dispatch, not a voicemail. [CLIENT — story, portraits, equipment
-          inventory.]
+          Who picks up at 3am is someone who can dispatch, not a voicemail. Two crews sit on call. The worst-case
+          response in Vancouver, Burnaby, New Westminster, North Vancouver, West Vancouver, and Richmond is sixty
+          minutes. Outer municipalities are slower on purpose — we print the minutes rather than invent them.
         </p>
-        <p>{vancouver.certifications} · {vancouver.licences} · {vancouver.insurance}</p>
-        <p><a href="/about-tidemark/">The company across markets →</a></p>
+        <p>
+          The job is the file. Photographs, moisture readings, a daily drying log, and a written rebuild scope once
+          every marked point meets target. Equipment is capped at five days. Rates are on the site, not quoted after
+          the fans are running. The same crew that opened the wall hangs the board.
+        </p>
+        <p>
+          Work follows IICRC S500. The crew is covered under WorkSafeBC. We carry commercial liability and pollution
+          cover on the trucks. Licence numbers sit on the invoice and on the van — ask for them when we arrive.
+        </p>
+        <p>
+          Call <a href={`tel:${vancouver.phoneTel}`}>{vancouver.phoneDisplay}</a>. Office: {vancouver.addressLine}.
+        </p>
+        <p><a href="/about-calder/">The company across markets →</a></p>
       </div>
     </section>
     <section class="section">
       <div class="wrap tiles">
-        <PhotoSlot ratio="3/2" caption="CREW" label="Crew photograph" />
-        <PhotoSlot ratio="3/2" caption="PORTRAIT" label="Portrait" />
-        <PhotoSlot ratio="3/2" caption="EQUIPMENT" label="Equipment inventory photograph" />
+        <PhotoSlot
+          ratio="3/2"
+          src={crewPhoto}
+          widths={[320, 640]}
+          sizes={tileSizes}
+          label="Four technicians at the open back of the work van on a driveway, drying equipment stacked inside."
+        />
+        <PhotoSlot
+          ratio="3/2"
+          src={portraitPhoto}
+          widths={[320, 640]}
+          sizes={tileSizes}
+          label="A technician on site holding a moisture meter, a room being dried behind him."
+        />
+        <PhotoSlot
+          ratio="3/2"
+          src={equipmentPhoto}
+          widths={[320, 640]}
+          sizes={tileSizes}
+          label="Racked air movers, dehumidifiers and meters in the equipment bay."
+        />
       </div>
     </section>
   </main>

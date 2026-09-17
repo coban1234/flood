@@ -1,15 +1,19 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
+import { Image } from "astro:assets";
 import PhotoSlot from "../../../../components/PhotoSlot.astro";
 import Faq from "../../../../components/Faq.astro";
 import DryLog from "../../../../components/DryLog.astro";
 import DamageClock from "../../../../components/DamageClock.astro";
 import DropletTrace from "../../../../components/DropletTrace.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { services, getService } from "../../../../data/services";
 import { launchJobs } from "../../../../data/jobs";
 import { homeRatePreview } from "../../../../data/rates";
+import { servicePhotos } from "../../../../data/servicePhotos";
+import { serviceStages } from "../../../../data/serviceStagePhotos";
+import { jobPhotos } from "../../../../data/jobPhotos";
 
 export function getStaticPaths() {
   return services.map((s) => ({ params: { slug: s.slug } }));
@@ -22,20 +26,22 @@ if (!service) throw new Error("Unknown service");
 const path = `${vancouver.path}/services/${service.slug}/`;
 const siblings = services.filter((s) => s.slug !== service.slug).slice(0, 2);
 const job = launchJobs.find((j) => j.serviceSlug === service.slug) ?? launchJobs[0];
+const jobPhoto = jobPhotos[job.slug];
+const stages = serviceStages(service.slug);
 
 const jsonLd = [
   {
     "@context": "https://schema.org",
     "@type": "Service",
     name: service.name,
-    provider: { "@type": "LocalBusiness", name: "Tidemark Restoration", telephone: vancouver.phoneTel },
+    provider: { "@type": "LocalBusiness", name: brand.name, telephone: vancouver.phoneTel },
     areaServed: "Metro Vancouver",
   },
 ];
 ---
 
 <MarketLayout
-  title={`${service.keyword} | Tidemark Restoration`}
+  title={`${service.keyword} | ${brand.name}`}
   description={`${service.name} in Metro Vancouver. ${service.intro} Call ${vancouver.phoneDisplay}.`}
   path={path}
   jsonLd={jsonLd}
@@ -44,7 +50,7 @@ const jsonLd = [
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Services", href: `${SITE_ORIGIN}${vancouver.path}/services/` },
           { name: service.name },
@@ -64,8 +70,11 @@ const jsonLd = [
         </div>
         <PhotoSlot
           ratio="16/9"
+          src={servicePhotos[service.slug]?.src}
+          priority
+          sizes="(min-width: 64rem) 30rem, 100vw"
           caption={`FIG. S — ${service.tile.toUpperCase()} · METRO VANCOUVER`}
-          label={`${service.name} hero photograph, local crew and equipment`}
+          label={servicePhotos[service.slug]?.alt ?? `${service.name} hero photograph, local crew and equipment`}
         />
       </div>
     </section>
@@ -74,27 +83,38 @@ const jsonLd = [
     {(service.slug === "mould-remediation" || service.slug === "sewage-category-3") && <DamageClock />}
     {(service.slug === "basement-flooding" || service.slug === "burst-pipe") && <DropletTrace />}
 
-    <section class="section">
-      <div class="wrap">
-        <h2 class="display">On the job</h2>
-        <div class="tiles">
-          <PhotoSlot ratio="4/3" caption="FIG. A — IN PROGRESS" label="In-progress photograph" />
-          <PhotoSlot ratio="4/3" caption="FIG. B — IN PROGRESS" label="Second in-progress photograph" />
-          <PhotoSlot ratio="4/3" caption="FIG. C — DETAIL" label="Detail or readout photograph" />
-        </div>
-      </div>
-    </section>
+    {
+      stages.length > 0 && (
+        <section class="section">
+          <div class="wrap">
+            <h2 class="display">On the job</h2>
+            <div class="tiles">
+              {stages.map((stage) => (
+                <PhotoSlot
+                  ratio="4/3"
+                  src={stage.src}
+                  widths={[320, 640]}
+                  sizes="(min-width: 1024px) 21rem, (min-width: 480px) 50vw, 100vw"
+                  caption={stage.caption}
+                  label={stage.alt}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+      )
+    }
 
     <section class="section section--tint">
-      <div class="wrap page-grid">
-        <div>
+      <div class="wrap page-grid page-grid--pair">
+        <div class="spec-plate">
           <h2 class="display">Spec plate</h2>
           <ul>
             {service.spec.map((line) => <li>{line}</li>)}
           </ul>
         </div>
         <aside class="night-card">
-          <p class="eyebrow">Cost</p>
+          <h2 class="display">Cost</h2>
           <table class="rate-table">
             <tbody>
               {
@@ -115,26 +135,42 @@ const jsonLd = [
     <section class="section">
       <div class="wrap">
         <h2 class="display">A documented job</h2>
-        <a href={`${vancouver.path}/work/${job.slug}/`}>{job.title} →</a>
-      </div>
-    </section>
-
-    <Faq items={[...service.faqs]} />
-
-    <section class="section">
-      <div class="wrap">
-        <p>
-          Also:
+        <a class="job-card" href={`${vancouver.path}/work/${job.slug}/`}>
           {
-            siblings.map((s, i) => (
-              <>
-                {i > 0 && " · "}
-                <a href={`${vancouver.path}/services/${s.slug}/`}>{s.name}</a>
-              </>
-            ))
+            jobPhoto && (
+              <div class="job-card__photo">
+                <Image
+                  src={jobPhoto.src}
+                  alt={jobPhoto.alt}
+                  widths={[480, 768]}
+                  sizes="(min-width: 768px) 28rem, 100vw"
+                  loading="lazy"
+                />
+              </div>
+            )
           }
-        </p>
+          <div class="job-card__body">
+            <p class="eyebrow">{job.property}</p>
+            <p class="display">{job.title}</p>
+            <p>{job.summary}</p>
+            <span class="job-card__more">Read the job →</span>
+          </div>
+        </a>
       </div>
     </section>
+
+    <Faq items={[...service.faqs]}>
+      <p class="also-line">
+        Also:
+        {
+          siblings.map((s, i) => (
+            <>
+              {i > 0 && " · "}
+              <a href={`${vancouver.path}/services/${s.slug}/`}>{s.name}</a>
+            </>
+          ))
+        }
+      </p>
+    </Faq>
   </main>
 </MarketLayout>

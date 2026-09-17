@@ -7,7 +7,7 @@ import { guides } from "./guides";
 
 export const urls = [
   "/",
-  "/about-tidemark/",
+  "/about-calder/",
   "/guides/",
   `${vancouver.path}/`,
   `${vancouver.path}/emergency/`,

@@ -5,8 +5,9 @@ import ShutoffFinder from "../../../../components/ShutoffFinder.astro";
 import DamageClock from "../../../../components/DamageClock.astro";
 import DropletTrace from "../../../../components/DropletTrace.astro";
 import PhotoSlot from "../../../../components/PhotoSlot.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { firstHourPages, getFirstHour } from "../../../../data/firstHour";
+import { firstHourPhoto } from "../../../../data/firstHourPhotos";
 
 export function getStaticPaths() {
   return firstHourPages.map((p) => ({ params: { slug: p.slug } }));
@@ -16,6 +17,7 @@ const page = getFirstHour(Astro.params.slug!);
 if (!page) throw new Error("Unknown first-hour page");
 
 const path = `${vancouver.path}/first-hour/${page.slug}/`;
+const photo = firstHourPhoto(page.slug);
 const howTo = {
   "@context": "https://schema.org",
   "@type": "HowTo",
@@ -29,7 +31,7 @@ const howTo = {
 ---
 
 <MarketLayout
-  title={`${page.title}: What To Do First | Metro Vancouver | Tidemark`}
+  title={`${page.title}: What To Do First | Metro Vancouver | ${brand.shortName}`}
   description={`${page.steps.map((s) => s.text).join(" ")} Call ${vancouver.phoneDisplay}.`}
   path={path}
   jsonLd={[howTo]}
@@ -38,7 +40,7 @@ const howTo = {
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "First hour", href: `${SITE_ORIGIN}${vancouver.path}/first-hour/` },
           { name: page.title },
@@ -84,7 +86,18 @@ const howTo = {
         <div>
           <h2 class="display">On arrival</h2>
           <p class="lede">{page.arrival}</p>
-          <PhotoSlot ratio="3/2" caption="FIG. FH — INSTRUCTIONAL" label="Instructional photograph" />
+          {
+            photo && (
+              <PhotoSlot
+                ratio="3/2"
+                src={photo.src}
+                widths={[480, 768]}
+                sizes="(min-width: 64rem) 34rem, 100vw"
+                caption={photo.caption}
+                label={photo.alt}
+              />
+            )
+          }
         </div>
         <div>
           <h2 class="display">Is this a claim?</h2>

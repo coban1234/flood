@@ -1,3 +1,5 @@
+import { brand } from "./site";
+
 export const clockBands = [
   {
     id: "0-6",
@@ -111,7 +113,7 @@ export const shutoffTypes = [
       "Building main — operations or overnight security.",
     ],
     valve: "Do not enter a riser closet. Do not operate a floor valve you were not shown.",
-    building: "Call the concierge or after-hours number, then Tidemark. We will work with whoever has keys.",
+    building: `Call the concierge or after-hours number, then ${brand.shortName}. We will work with whoever has keys.`,
   },
 ] as const;
 

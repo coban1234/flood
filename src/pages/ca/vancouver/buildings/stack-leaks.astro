@@ -2,13 +2,13 @@
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import DropletTrace from "../../../../components/DropletTrace.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 
 const path = `${vancouver.path}/buildings/stack-leaks/`;
 ---
 
 <MarketLayout
-  title="Stack Leak Response Metro Vancouver | Tidemark Restoration"
+  title={`Stack Leak Response Metro Vancouver | ${brand.name}`}
   description="How a stack leak moves through a low-rise strata, and how we sequence three units in one night."
   path={path}
 >
@@ -16,7 +16,7 @@ const path = `${vancouver.path}/buildings/stack-leaks/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Buildings", href: `${SITE_ORIGIN}${vancouver.path}/buildings/` },
           { name: "Stack leaks" },
         ]}

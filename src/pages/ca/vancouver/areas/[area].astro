@@ -1,10 +1,9 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import PhotoSlot from "../../../../components/PhotoSlot.astro";
 import RateCard from "../../../../components/RateCard.astro";
 import Faq from "../../../../components/Faq.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { builtAreas, getArea } from "../../../../data/areas";
 import { services } from "../../../../data/services";
 import { jobs } from "../../../../data/jobs";
@@ -58,30 +57,24 @@ const faqs = [
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Areas", href: `${SITE_ORIGIN}${vancouver.path}/areas/` },
           { name: area.name },
         ]}
       />
     </div>
+    {/* An area hero photograph must be a real job shot in this area. Restore the slot once one exists. */}
     <section class="hero">
-      <div class="wrap hero-grid">
-        <div>
-          <p class="eyebrow">
-            Response · Tier {area.tier} · {area.minutes} minutes
-          </p>
-          <h1 class="display">Water damage restoration in {area.name}</h1>
-          <p class="status"><span class="dot"></span>2 crews on call now</p>
-          <div class="actions">
-            <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
-          </div>
+      <div class="wrap">
+        <p class="eyebrow">
+          Response · Tier {area.tier} · {area.minutes} minutes
+        </p>
+        <h1 class="display">Water damage restoration in {area.name}</h1>
+        <p class="status"><span class="dot"></span>2 crews on call now</p>
+        <div class="actions">
+          <a class="btn btn--call" href={`tel:${vancouver.phoneTel}`} data-event="call_tap">Call {vancouver.phoneDisplay}</a>
         </div>
-        <PhotoSlot
-          ratio="3/2"
-          caption={`FIG. AREA — A REAL ${area.name.toUpperCase()} JOB`}
-          label={`Real job photograph in ${area.name} — required before this page is considered shot-complete`}
-        />
       </div>
     </section>
     <section class="section">

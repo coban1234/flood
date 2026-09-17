@@ -1,14 +1,42 @@
 ---
+import { Image } from "astro:assets";
+
 interface Props {
-  caption: string;
+  caption?: string;
   ratio?: "16/9" | "4/5" | "3/2" | "4/3";
   label: string;
+  src?: ImageMetadata;
+  sizes?: string;
+  widths?: number[];
+  priority?: boolean;
 }
 
-const { caption, ratio = "16/9", label } = Astro.props;
+const {
+  caption,
+  ratio = "16/9",
+  label,
+  src,
+  sizes = "(min-width: 64rem) 40rem, 100vw",
+  widths = [480, 768, 1024],
+  priority = false,
+} = Astro.props;
 ---
 
 <figure class="photo-slot">
-  <div class="photo-slot__frame" data-ratio={ratio} role="img" aria-label={label}></div>
-  <figcaption>{caption}</figcaption>
+  <div class="photo-slot__frame" data-ratio={ratio} role={src ? undefined : "img"} aria-label={src ? undefined : label}>
+    {
+      src && (
+        <Image
+          src={src}
+          alt={label}
+          widths={widths}
+          sizes={sizes}
+          loading={priority ? "eager" : "lazy"}
+          fetchpriority={priority ? "high" : "auto"}
+          decoding={priority ? "sync" : "async"}
+        />
+      )
+    }
+  </div>
+  {caption && <figcaption>{caption}</figcaption>}
 </figure>

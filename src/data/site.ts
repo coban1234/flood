@@ -1,3 +1,12 @@
+/** Brand and origin live here — templates read these, they do not hardcode the name. */
+export const brand = {
+  shortName: "Calder",
+  name: "Calder Restoration",
+  domain: "calderrestoration.com",
+  caDomain: "calderrestoration.ca",
+  origin: "https://calderrestoration.com",
+} as const;
+
 export const vancouver = {
   slug: "vancouver",
   country: "CA" as const,
@@ -6,10 +15,12 @@ export const vancouver = {
   name: "Metro Vancouver",
   shortName: "Vancouver",
   path: "/ca/vancouver",
-  phoneDisplay: "(604) 555-0199",
-  phoneTel: "+16045550199",
+  phoneDisplay: "(604) 968-5835",
+  phoneTel: "+16049685835",
   hours: "24/7",
-  addressLine: "[CLIENT — street address], Vancouver, BC",
+  addressLine: "1201-888 Homer St, Vancouver, BC V6B 0H7",
+  streetAddress: "1201-888 Homer St",
+  postalCode: "V6B 0H7",
   licences: "WorkSafeBC #[CLIENT] · Business licence #[CLIENT]",
   certifications: "IICRC #[CLIENT]",
   insurance: "Liability and pollution coverage [CLIENT]",
@@ -49,7 +60,7 @@ export const newYork = {
   phoneTel: "+12125550148",
 };
 
-export const SITE_ORIGIN = "https://tidemarkrestoration.com";
+export const SITE_ORIGIN = brand.origin;
 
 export type Market = typeof vancouver;
 

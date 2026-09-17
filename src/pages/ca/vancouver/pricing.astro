@@ -4,7 +4,7 @@ import Breadcrumbs from "../../../components/Breadcrumbs.astro";
 import RateCard from "../../../components/RateCard.astro";
 import DryLog from "../../../components/DryLog.astro";
 import Faq from "../../../components/Faq.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 import { commitments, overnightNote } from "../../../data/rates";
 
 const path = `${vancouver.path}/pricing/`;
@@ -38,7 +38,7 @@ const faqs = [
 
 <MarketLayout
   title="Water Damage Restoration Cost Metro Vancouver — Rates Published"
-  description="Published water damage restoration rates in Metro Vancouver. Call-out $400. Equipment capped at five days. Call (604) 555-0199."
+  description={`Published water damage restoration rates in Metro Vancouver. Call-out $400. Equipment capped at five days. Call ${vancouver.phoneDisplay}.`}
   path={path}
   jsonLd={[
     {
@@ -54,7 +54,7 @@ const faqs = [
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Pricing" },
         ]}

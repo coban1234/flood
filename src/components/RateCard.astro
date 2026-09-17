@@ -22,8 +22,8 @@ const areaName = Astro.props.areaName;
 
 <div class="stack" id="rate-card">
   <p class="lede">
-    {areaName ? rateSameNote.replace("this area", areaName) : rateSameNote} Last updated {lastUpdated}. [CLIENT — verify
-    against cost before publication.]
+    {areaName ? rateSameNote.replace("this area", areaName) : rateSameNote} All rates are shown before GST. Last
+    updated {lastUpdated}.
   </p>
   <RateTable title="Call-outs" rows={callouts} />
   <RateTable title="Drying equipment, per 24 hours — capped at five days" rows={equipment} />

@@ -1,31 +1,167 @@
 ---
 import MarketLayout from "../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 
 const path = `${vancouver.path}/terms/`;
 ---
 
 <MarketLayout
-  title="Terms | Tidemark Restoration Metro Vancouver"
-  description="Terms of use for the Vancouver market site. [CLIENT — counsel review.]"
+  title={`Terms of Service | ${brand.name} Metro Vancouver`}
+  description={`Terms for using this site and hiring ${brand.name} in Metro Vancouver. Published mitigation rates, written rebuild scopes, and how we bill. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Terms" },
         ]}
       />
     </div>
     <section class="hero">
       <div class="wrap prose">
-        <h1 class="display">Terms</h1>
+        <p class="eyebrow">Metro Vancouver</p>
+        <h1 class="display">Terms of service</h1>
+        <p class="lede">
+          These terms cover this website and work we perform in Metro Vancouver. Last updated September 2026.
+        </p>
         <p>
-          Published rates cover mitigation. Rebuild is quoted in writing after dry-out. The site is information, not a
-          contract until a scope is signed. [CLIENT — replace with counsel-approved terms for {vancouver.legalEntity}.]
+          {brand.name} operates from {vancouver.addressLine}. Emergency line: {vancouver.phoneDisplay}, 24/7.
+          The site is information. A job is a contract only when you (or an authorised insurer, strata, or property
+          manager) accept a written scope, or when you ask us to start emergency mitigation by phone.
+        </p>
+
+        <h2 class="display">Using this website</h2>
+        <p>
+          You may read, print, and share pages for personal or professional use. You may not copy the rate card,
+          photographs, or copy into another restoration site, scrape the pages, or present our materials as your own.
+          Prices, response times, and service descriptions can change. The live page is the current version.
+        </p>
+        <p>
+          Area response times are worst-case targets from dispatch, not a guarantee we will be at your door in that
+          minute on every call. If we cannot meet the published band, we say so when you call.
+        </p>
+
+        <h2 class="display">Emergency mitigation</h2>
+        <p>
+          Calling {vancouver.phoneDisplay} and asking us to attend is an instruction to start emergency mitigation:
+          make the area safe, stop the source where we can, extract standing water, and set drying equipment. That work
+          proceeds immediately. You do not need a signed paper on the kitchen counter before we pull water.
+        </p>
+        <p>
+          You (or the person who called) confirm you have authority to let us into the property. If you do not own it,
+          you tell us who does — strata, landlord, insurer — and we document that. We may refuse or stop work if the
+          site is unsafe, if access is blocked, or if we cannot establish who is authorising the job.
+        </p>
+
+        <h2 class="display">Rates and what they cover</h2>
+        <p>
+          Published rates on the pricing page cover mitigation: call-out, labour, equipment, Category 3 response, and
+          the demolition and treatment lines listed there. Every charge that can appear on a mitigation invoice is on
+          that page. No fuel surcharge, contractor fee, or administrative add-on.
+        </p>
+        <p>
+          Labour is rounded to the nearest half hour. Drive time is included. Equipment is billed to the day readings
+          hit target, capped at five days unless you approve an extension in writing. Overnight, weekend, and statutory
+          holiday labour is higher because someone has to be awake, insured, and equipped. Those bands are on the card.
+        </p>
+        <p>
+          Rebuild — drywall, paint, flooring, millwork, finishes — is not on the mitigation card. It is quoted in
+          writing after the drying log closes. We do not start rebuild until that scope is accepted.
+        </p>
+        <p>
+          Work billed to an insurer follows that insurer's programme rates, not the public card. Work you pay yourself
+          uses the published card. GST is extra.
+        </p>
+
+        <h2 class="display">Payment</h2>
+        <p>
+          Emergency work is due on completion. Insurer-billed files are net 30 from the closing invoice. We accept
+          Interac e-Transfer, Visa, Mastercard, and cheque. We do not take a deposit on an emergency call-out.
+        </p>
+        <p>
+          Unpaid invoices may pause remaining work, including rebuild. Collection costs reasonably incurred may be
+          added. A dispute over one line does not freeze the rest of an undisputed invoice.
+        </p>
+
+        <h2 class="display">The drying log</h2>
+        <p>
+          We photograph the loss, take moisture readings at marked points, and keep a daily log until every point meets
+          target. You can ask for that file. Surfaces can read dry while cavities do not. We do not pull equipment
+          because a floor feels dry to the hand.
+        </p>
+        <p>
+          Drying time is a range, not a promise. Three to five days is common when we extract the same night. Cool,
+          damp Metro Vancouver rooms, late extraction, and Category 2 or 3 water all extend the log. If the building
+          needs more than five days of equipment, we show you the readings before day six.
+        </p>
+
+        <h2 class="display">Insurance</h2>
+        <p>
+          We document the loss so an adjuster can read it. We do not decide what a policy pays, bind coverage, or act
+          as your broker. Deductibles, depreciation, sewage-backup endorsements, and whether groundwater is excluded
+          are questions for your insurer. We restore the building either way.
+        </p>
+        <p>
+          Directing us to bill your insurer is not a guarantee they will pay. If they decline, the invoice remains
+          yours unless another party has accepted it in writing.
+        </p>
+
+        <h2 class="display">Access, contents, and safety</h2>
+        <p>
+          You keep people and pets out of unsafe areas. You tell us about electrical hazards, sewage, and anyone who
+          should not be on site. We may isolate rooms, pull baseboards, open cavities, and remove materials that cannot
+          be dried. Porous goods that took Category 3 water often cannot be saved. We show you what comes out before we
+          pull it where that is practical.
+        </p>
+        <p>
+          Contents we pack out are inventoried. We are not a storage warehouse for goods left on site after we close
+          the log. Salvage is not guaranteed. Pre-existing damage, hidden conditions, and water that travelled two
+          rooms over before we arrived are not defects in our work.
+        </p>
+
+        <h2 class="display">Limitation</h2>
+        <p>
+          We perform the work with reasonable skill, in line with IICRC S500 practice as it applies to the job. We are
+          not liable for loss of use, lost rent, lost stock, or other indirect loss, except where the law of British
+          Columbia does not allow that limit. Our liability for a job is limited to the amount invoiced for that job,
+          except in cases of our gross negligence or wilful misconduct, or death or personal injury we cause.
+        </p>
+        <p>
+          Nothing on this site is legal, insurance, or medical advice. First-hour pages are instructions for the minutes
+          before we arrive, not a substitute for calling {vancouver.phoneDisplay} while water is moving.
+        </p>
+
+        <h2 class="display">Photographs</h2>
+        <p>
+          Job photographs used to document a loss for you, an adjuster, or a strata are part of the file. We do not
+          publish identifiable photos of your property on this site without written permission. Images currently on the
+          site are illustrative.
+        </p>
+
+        <h2 class="display">Governing law</h2>
+        <p>
+          These terms and any job they cover are governed by the laws of British Columbia. Courts in Vancouver, BC have
+          jurisdiction, except where a consumer-protection statute requires otherwise.
+        </p>
+        <p>
+          If a part of these terms cannot be enforced, the rest still applies. We may update this page. The date at the
+          top is the current version. Work already underway stays on the terms that applied when that work started,
+          unless you agree otherwise in writing.
+        </p>
+
+        <h2 class="display">Contact</h2>
+        <p>
+          Questions about a job or this page: call {vancouver.phoneDisplay}, or write to us at {vancouver.addressLine}.
+        </p>
+        <p>
+          <a href={`${vancouver.path}/privacy/`}>Privacy</a>
+          ·
+          <a href={`${vancouver.path}/pricing/`}>Published rates</a>
+          ·
+          <a href={`${vancouver.path}/contact/`}>Contact</a>
         </p>
       </div>
     </section>

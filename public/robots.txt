@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://tidemarkrestoration.com/sitemap-index.xml
+Sitemap: https://calderrestoration.com/sitemap-index.xml

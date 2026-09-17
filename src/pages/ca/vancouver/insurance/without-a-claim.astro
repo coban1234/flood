@@ -1,21 +1,21 @@
 ---
 import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 
 const path = `${vancouver.path}/insurance/without-a-claim/`;
 ---
 
 <MarketLayout
-  title="Water Damage Without a Claim Metro Vancouver | Tidemark"
-  description="Not every loss should become a claim. Published rates, honest scope. Call (604) 555-0199."
+  title={`Water Damage Without a Claim Metro Vancouver | ${brand.shortName}`}
+  description={`Not every loss should become a claim. Published rates, honest scope. Call ${vancouver.phoneDisplay}.`}
   path={path}
 >
   <main id="main">
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Insurance", href: `${SITE_ORIGIN}${vancouver.path}/insurance/` },
           { name: "Without a claim" },
         ]}

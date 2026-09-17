@@ -1,15 +1,17 @@
 ---
 import Base from "../../../layouts/Base.astro";
-import { SITE_ORIGIN, vancouver } from "../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../data/site";
 import { areas } from "../../../data/areas";
 import { emergencySteps } from "../../../data/content";
+import { Image } from "astro:assets";
+import crewArrival from "../../../assets/photos/emergency-crew-arrival-night.png";
 
 const path = `${vancouver.path}/emergency/`;
 const canonical = `${SITE_ORIGIN}${path}`;
 ---
 
 <Base
-  title="Emergency Water Damage Metro Vancouver — Call 24/7 | Tidemark"
+  title={`Emergency Water Damage Metro Vancouver — Call 24/7 | ${brand.shortName}`}
   description={`Emergency water damage in Metro Vancouver. Call ${vancouver.phoneDisplay}. 24/7 live answer.`}
   canonical={canonical}
   lang="en-CA"
@@ -22,11 +24,19 @@ const canonical = `${SITE_ORIGIN}${path}`;
     {
       "@context": "https://schema.org",
       "@type": ["LocalBusiness", "EmergencyService"],
-      name: "Tidemark Restoration",
+      name: brand.name,
       telephone: vancouver.phoneTel,
       url: canonical,
       areaServed: "Metro Vancouver",
       openingHours: "Mo-Su 00:00-23:59",
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: vancouver.streetAddress,
+        addressLocality: "Vancouver",
+        addressRegion: "BC",
+        postalCode: vancouver.postalCode,
+        addressCountry: "CA",
+      },
     },
   ]}
 >
@@ -49,7 +59,18 @@ const canonical = `${SITE_ORIGIN}${path}`;
           ))
         }
       </ol>
-      <p class="caption" style="color:rgb(244 241 234 / 0.55)">IMG-EMER-01 · one frame, under 60 KB, local crew.</p>
+      <figure class="emergency__figure">
+        <Image
+          src={crewArrival}
+          alt={`Two ${brand.shortName} technicians unloading an extractor and an air mover from the van outside a Metro Vancouver house at night.`}
+          widths={[640, 960]}
+          sizes="(min-width: 40rem) 40rem, 100vw"
+          quality={45}
+          loading="lazy"
+          decoding="async"
+        />
+        <figcaption class="caption">A crew on the road. Metro Vancouver, 24/7.</figcaption>
+      </figure>
       <h2 style="margin-top:2rem;font-size:1rem;letter-spacing:0.12em;text-transform:uppercase">Coverage</h2>
       <ul class="list-plain">
         {
@@ -75,5 +96,18 @@ const canonical = `${SITE_ORIGIN}${path}`;
   }
   .emergency .step {
     border-color: rgb(255 255 255 / 0.12);
+  }
+  .emergency__figure {
+    margin: 1.5rem 0 0;
+  }
+  .emergency__figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+  }
+  .emergency__figure .caption {
+    margin: 0.5rem 0 0;
+    color: rgb(244 241 234 / 0.55);
   }
 </style>

@@ -3,8 +3,9 @@ import MarketLayout from "../../../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../../../components/Breadcrumbs.astro";
 import PhotoSlot from "../../../../components/PhotoSlot.astro";
 import DryLog from "../../../../components/DryLog.astro";
-import { SITE_ORIGIN, vancouver } from "../../../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../../../data/site";
 import { jobs, getJob } from "../../../../data/jobs";
+import { jobPhotos } from "../../../../data/jobPhotos";
 
 export function getStaticPaths() {
   return jobs.map((j) => ({ params: { slug: j.slug } }));
@@ -16,7 +17,7 @@ const path = `${vancouver.path}/work/${job.slug}/`;
 ---
 
 <MarketLayout
-  title={`${job.title} | Metro Vancouver | Tidemark`}
+  title={`${job.title} | Metro Vancouver | ${brand.shortName}`}
   description={job.summary}
   path={path}
   jsonLd={[
@@ -32,7 +33,7 @@ const path = `${vancouver.path}/work/${job.slug}/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}${vancouver.path}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Metro Vancouver", href: `${SITE_ORIGIN}${vancouver.path}/` },
           { name: "Work", href: `${SITE_ORIGIN}${vancouver.path}/work/` },
           { name: job.title },
@@ -41,7 +42,19 @@ const path = `${vancouver.path}/work/${job.slug}/`;
     </div>
     <section class="hero">
       <div class="wrap">
-        <PhotoSlot ratio="16/9" caption={job.heroCaption} label={job.title} />
+        {
+          jobPhotos[job.slug] && (
+            <PhotoSlot
+              ratio="16/9"
+              src={jobPhotos[job.slug].src}
+              priority
+              widths={[640, 1024, 1152]}
+              sizes="(min-width: 78rem) 76rem, 100vw"
+              caption={job.heroCaption}
+              label={jobPhotos[job.slug].alt}
+            />
+          )
+        }
         <p class="eyebrow" style="margin-top:1.5rem">{job.type}</p>
         <h1 class="display">{job.title}</h1>
         <p class="lede">{job.summary}</p>
@@ -81,13 +94,9 @@ const path = `${vancouver.path}/work/${job.slug}/`;
       </div>
     </section>
     <DryLog />
+    {/* Before/after must be real frames from this job. Restore the section once they exist. */}
     <section class="section">
       <div class="wrap">
-        <h2 class="display">Before / after</h2>
-        <div class="tiles">
-          <PhotoSlot ratio="3/2" caption="BEFORE" label="Before photograph" />
-          <PhotoSlot ratio="3/2" caption="AFTER" label="After photograph" />
-        </div>
         <p>
           <a href={`${vancouver.path}/services/${job.serviceSlug}/`}>Service →</a>
           ·

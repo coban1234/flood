@@ -1,7 +1,7 @@
 ---
 import MarketLayout from "../../layouts/MarketLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
-import { SITE_ORIGIN, vancouver } from "../../data/site";
+import { SITE_ORIGIN, brand, vancouver } from "../../data/site";
 import { guides, getGuide } from "../../data/guides";
 
 export function getStaticPaths() {
@@ -14,7 +14,7 @@ const path = `/guides/${guide.slug}/`;
 ---
 
 <MarketLayout
-  title={`${guide.title} | Tidemark Restoration`}
+  title={`${guide.title} | ${brand.name}`}
   description={guide.dek}
   path={path}
   jsonLd={[
@@ -32,7 +32,7 @@ const path = `/guides/${guide.slug}/`;
     <div class="wrap">
       <Breadcrumbs
         crumbs={[
-          { name: "Tidemark", href: `${SITE_ORIGIN}/` },
+          { name: brand.shortName, href: `${SITE_ORIGIN}/` },
           { name: "Guides", href: `${SITE_ORIGIN}/guides/` },
           { name: guide.title },
         ]}
